@@ -73,14 +73,20 @@ public class Jugador : MonoBehaviour
 		if(Input.GetKeyDown (KeyCode.K) && !estaSaltando){
  			rigidBody2D.gravityScale = 1f;
 			animator.SetBool ("estaSaltando", true);
-			rigidBody2D.velocity = Vector2.up * poderDeSalto;
+			rigidBody2D.AddForce(Vector2.up * poderDeSalto, ForceMode2D.Impulse);
 			estaSaltando = true;
 			sePuedeMover = false;
-			Invoke ("FrenarSalto", 2f);
+			Invoke ("FrenarSalto", 1.05f);
 		}
+
+		/*if(estaSaltando && rigidBody2D.velocity.y < 0.01f){
+			Debug.Log("aca");
+			rigidBody2D.AddForce(-Vector2.up * poderDeSalto, ForceMode2D.Impulse);
+		}*/
 	}
 
 	void FrenarSalto(){
+
 		rigidBody2D.gravityScale = 0f;
 
 		Vector2 frenoDeVelocidad;
