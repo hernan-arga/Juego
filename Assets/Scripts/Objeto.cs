@@ -7,7 +7,7 @@ public class Objeto : MonoBehaviour {
 	
 	private SpriteRenderer spriteRenderer;
 	private Jugador unJugador = null;
-	private bool objetoTirado = false;
+	//private bool objetoTirado = false;
 	private Rigidbody2D rigidBody;
 
 	void OnEnable(){
@@ -37,33 +37,43 @@ public class Objeto : MonoBehaviour {
 		if(unJugador!=null){
 			gameObject.transform.position = unJugador.transform.position + Vector3.up * 1.2f;
 		}
-		else{
+		/*else{
 			if(objetoTirado){
 				//rigidBody.bodyType = RigidbodyType2D.Dynamic;
-				rigidBody.AddForce(new Vector3(1,1,0)*10);
+				rigidBody.AddForce(new Vector3(direccionXObjetoTirado,1,0)*10);
+				objetoTirado = false;
 				//rigidBody.bodyType = RigidbodyType2D.Static;
+			}
+		}*/
+	}
+
+	void levantarItem(Jugador jugador){
+		if(jugador.getItemTomado() != null){
+			string nombreItemTomado = jugador.getItemTomado().name;
+			bool esElObjetoTomado = string.Equals(nombreItemTomado, this.name);
+			if(esElObjetoTomado){
+				unJugador = jugador;
 			}
 		}
 	}
 
-	void levantarItem(Jugador jugador){
-		string nombreItemTomado = jugador.getItemTomado().name;
-		bool esElObjetoTomado = string.Equals(nombreItemTomado, this.name);
-		if(esElObjetoTomado){
-			unJugador = jugador;
-		}
-	}
-
-	void tirarItem(){
+	void tirarItem(float direccionATirar){
 		if (unJugador != null)
 		{
+			//objetoTirado = true;
+			rigidBody.bodyType = RigidbodyType2D.Dynamic;
+			rigidBody.AddForce(new Vector3(direccionATirar,.5f,0f)*400f);
+			Invoke ("frenarTirarItem", .7f);
 			unJugador.setTieneItem(false);
-			objetoTirado = true;
 		}
 		unJugador = null;
 
 		//Debug.Log (unJugador!=null);
 		//unJugador.tirarItem();
+	}
+
+	void frenarTirarItem(){
+		rigidBody.bodyType = RigidbodyType2D.Static;
 	}
 
 }

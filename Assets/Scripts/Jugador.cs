@@ -13,7 +13,7 @@ public class Jugador : MonoBehaviour
 {
 	public delegate void _levantarItem(Jugador jugador);
 	public static event _levantarItem eventoLevantarItem;
-	public delegate void _tirarItem();
+	public delegate void _tirarItem(float direccionATirar);
 	public static event _tirarItem eventoTirarItem;
 	
 	private SpriteRenderer spriteRenderer;
@@ -109,7 +109,7 @@ public class Jugador : MonoBehaviour
 	void chequearLevantarItem(){
 		List<GameObject> itemsActivos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Item"));
 		List<GameObject> itemsCercanos = itemsActivos
-			.Where( unItem => distanciaAObjeto(unItem) < distanciaMinimaParaLevantar1Objeto)
+			.Where( unItem => cumpleCondicionesParaSerLevantado(unItem))
 			.ToList();
 		bool laListaEstaVacia = itemsCercanos.Count.Equals(0);
 		bool hayItemsCerca = itemsCercanos != null && !laListaEstaVacia;
@@ -119,6 +119,11 @@ public class Jugador : MonoBehaviour
 			itemTomado = itemsCercanos [0];
 		}
 
+	}
+
+
+	bool cumpleCondicionesParaSerLevantado(GameObject unItem){
+		return distanciaAObjeto(unItem) < distanciaMinimaParaLevantar1Objeto && unItem.transform.position.y < this.transform.position.y;
 	}
 
 	//Comparar distancias al cuadrado es mas rapido que usar la funcion distance
@@ -250,9 +255,11 @@ public class Jugador : MonoBehaviour
 	}
 
 	void onTirarItem(){	
-		if (eventoTirarItem != null && tieneItem) {	
-			eventoTirarItem ();
+		if (eventoTirarItem != null && tieneItem) {
+			float aQueLadoTirar = Mathf.Sign(transform.localScale.x);
+			eventoTirarItem (aQueLadoTirar);
 			itemTomado = null;
+			tieneItem = false;
 		}
 	}
 
@@ -263,5 +270,10 @@ public class Jugador : MonoBehaviour
 	public void setTieneItem(bool valor){
 		tieneItem = valor;
 	}
+
+	public void GolpeadoPorAdelante(){
+		animator.SetTrigger("esGolpeadoPorAdelante");
+	}
+
 
 }
