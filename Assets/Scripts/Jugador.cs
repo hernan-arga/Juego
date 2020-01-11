@@ -18,27 +18,24 @@ public class Jugador : MonoBehaviour
 	
 	private SpriteRenderer spriteRenderer;
 	private Animator animator;
-	private Rigidbody2D rigidBody2D;
+	private Rigidbody rigidBody;
 	private bool estaCaminando = false;
 	private bool estaCorriendo = false;
 	private bool tieneItem = false;
 	private GameObject itemTomado = null;
-	private bool estaSaltando = false;
-	private bool sePuedeMover = true;
+	private bool tocandoPiso = false;
 
 	private bool reinicioDeComboTimer;
 	private float tiempoComboTimerActual;
 	private Ataque golpeActual;
 
-	public float poderDeVelocidad = 2;
-	public float maxVelocidad = 5;
+	public float minHeight, maxHeight;
+	public float poderDeVelocidad = 2f;
 	public float poderDeSalto = 6.5f;
 	public float tiempoComboTimerDefault = 0.4f;
-	public float velocidadHorizontal;
-	public float velocidadVertical;
 	public float modificadorDeAceleracion;
 	public float distanciaMinimaParaLevantar1Objeto;
-	Vector2 control;
+	Vector3 control;
 
 	// Use this for initialization
 	void Start ()
@@ -46,7 +43,7 @@ public class Jugador : MonoBehaviour
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		//gameObject == Self
 		animator = gameObject.GetComponentInParent<Animator> ();
-		rigidBody2D = GetComponent<Rigidbody2D> ();
+		rigidBody = GetComponent<Rigidbody> ();
 
 		tiempoComboTimerActual = tiempoComboTimerDefault;
 		golpeActual = Ataque.NINGUNO;
@@ -67,38 +64,20 @@ public class Jugador : MonoBehaviour
 		setearAnimaciones ();
 
 
+		//Defino el maximo espacio en el que se puede mover el personaje
+		float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0,0,10)).x;
+		float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 10)).x;
+		rigidBody.position = new Vector3(Mathf.Clamp(rigidBody.position.x, minWidth + 1, maxWidth - 1),
+			                          rigidBody.position.y, Mathf.Clamp(rigidBody.position.z, minHeight, maxHeight));
 	}
 
 	void chequearSaltar(){
-		if(Input.GetKeyDown (KeyCode.K) && !estaSaltando){
- 			rigidBody2D.gravityScale = 1f;
-			animator.SetBool ("estaSaltando", true);
-			rigidBody2D.AddForce(Vector2.up * poderDeSalto, ForceMode2D.Impulse);
-			estaSaltando = true;
-			sePuedeMover = false;
-			Invoke ("FrenarSalto", 1.05f);
+		if(Input.GetKeyDown (KeyCode.K) && tocandoPiso){
+			rigidBody.AddForce(Vector3.up * poderDeSalto);
 		}
 
-		/*if(estaSaltando && rigidBody2D.velocity.y < 0.01f){
-			Debug.Log("aca");
-			rigidBody2D.AddForce(-Vector2.up * poderDeSalto, ForceMode2D.Impulse);
-		}*/
 	}
 
-	void FrenarSalto(){
-
-		rigidBody2D.gravityScale = 0f;
-
-		Vector2 frenoDeVelocidad;
-		frenoDeVelocidad.x = 0f;
-		frenoDeVelocidad.y = 0f;
-
-		rigidBody2D.velocity = frenoDeVelocidad;
-
-		animator.SetBool ("estaSaltando", false);
-		estaSaltando = false;
-		sePuedeMover = true;
-	}
 
 	void chequearTirarItem(){
 		if(tieneItem &&  Input.GetKeyDown (KeyCode.J)){
@@ -168,7 +147,7 @@ public class Jugador : MonoBehaviour
 	void chequearMoverse ()
 	{	
 		bool hayMovimientoHorizontal = control.x != 0f;
-		bool hayMovimientoVertical = control.y != 0f;
+		bool hayMovimientoVertical = control.z != 0f;
 		bool hayMovimiento = hayMovimientoHorizontal || hayMovimientoVertical;
 		float acelerador = 1f;
 
@@ -185,47 +164,14 @@ public class Jugador : MonoBehaviour
 		}
 
 
-		desacelerarMovimiento();
-
-		agregarFuerzaDeMovimiento();
-
-		float limitedSpeedX = Mathf.Clamp(rigidBody2D.velocity.x, -maxVelocidad, maxVelocidad);
-		float limitedSpeedY = Mathf.Clamp(rigidBody2D.velocity.y, -maxVelocidad, maxVelocidad);
-
-		rigidBody2D.velocity = new Vector2(limitedSpeedX * acelerador, limitedSpeedY * acelerador);
-
-		/*if(hayMovimientoHorizontal || hayMovimientoVertical){
-			rigidBody2D.velocity = new Vector2 (control.x * velocidadHorizontal * acelerador,
-				control.y * velocidadVertical * acelerador);
-		}*/
-	}
-
-	void agregarFuerzaDeMovimiento(){
-		
-		control = new Vector2 (Input.GetAxisRaw("Horizontal"),
+		control = new Vector3 (Input.GetAxisRaw("Horizontal"), 0f,
 			Input.GetAxisRaw("Vertical"));
 
-		rigidBody2D.AddForce(Vector2.right * control.x * poderDeVelocidad);
-
-		if(sePuedeMover){
-			rigidBody2D.AddForce(Vector2.up * control.y * poderDeVelocidad);
-		}
-
+		rigidBody.velocity = new Vector3(control.x * poderDeVelocidad * acelerador,
+		                                 rigidBody.velocity.y, 
+		                                 control.z * poderDeVelocidad * acelerador);
 	}
 
-	void desacelerarMovimiento(){
-		
-		Vector2 fixedVelocity = rigidBody2D.velocity;
-		fixedVelocity.x *= 0.75f;
-
-		//Si esta saltando lo desacelero cuando llega al piso
-		if(!estaSaltando){
-			fixedVelocity.y *= 0.75f;
-		}
-
-		rigidBody2D.velocity = fixedVelocity;
-
-	}
 
 	void controlarVolteoDeSprite(){
 		transform.localScale = new Vector3(Mathf.Sign(control.x), 1f, 1f);
@@ -243,6 +189,7 @@ public class Jugador : MonoBehaviour
 	void setearAnimaciones(){
 		animator.SetBool ("estaCaminando", estaCaminando);
 		animator.SetBool ("estaCorriendo", estaCorriendo);
+		animator.SetBool("OnGround", tocandoPiso);
 		/*animator.SetBool ("estaGolpeando", estaGolpeando);
 		animator.SetBool ("estaGolpeandoDeNuevo", estaGolpeandoDeNuevo);*/
 	}
@@ -275,5 +222,30 @@ public class Jugador : MonoBehaviour
 		animator.SetTrigger("esGolpeadoPorAdelante");
 	}
 
+
+
+	void OnCollisionEnter(Collision col)
+	{
+		if (col.gameObject.tag == "Piso")
+		{
+			tocandoPiso = true;
+		}
+	}
+
+	void OnCollisionStay(Collision col)
+	{
+		if (col.gameObject.tag == "Piso")
+		{
+			tocandoPiso = true;
+		}
+	}
+
+	void OnCollisionExit(Collision col)
+	{
+		if (col.gameObject.tag == "Piso")
+		{
+			tocandoPiso = false;
+		}
+	}
 
 }

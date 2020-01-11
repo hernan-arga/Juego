@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Rival1 : MonoBehaviour
 {
-	private Rigidbody2D rigidBody2D;
+	private Rigidbody rigidBody;
 	private Animator animator;
 	private bool seguirJugador = true, atacar = false;
 	private List<GameObject> jugadoresObjetivos;
@@ -18,7 +18,7 @@ public class Rival1 : MonoBehaviour
     {
 		tiempoActualDeAtaque = tiempoPorDefectoDeAtaque;
         animator = gameObject.GetComponentInParent<Animator> ();
-		rigidBody2D = GetComponent<Rigidbody2D> ();
+		rigidBody = GetComponent<Rigidbody> ();
 		jugadoresObjetivos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
 
 		//jugadorObjetivo = jugadoresObjetivos[(int)Random.Range(0f, jugadoresObjetivos.Count)].transform;
@@ -66,12 +66,12 @@ public class Rival1 : MonoBehaviour
 
 		else
 		{
-			if(distanciaAObjetivoEnElEjeY(jugadorObjetivo) > 0.1f){
-				acomodarPersecucionEnY(jugadorObjetivo);
+			if(distanciaAObjetivoEnElEjeZ(jugadorObjetivo) > 0.1f){
+				acomodarPersecucionEnZ(jugadorObjetivo);
 				return;
 			}
 
-			rigidBody2D.velocity = new Vector2(0f, 0f);
+			rigidBody.velocity = new Vector3(0f, 0f, 0f);
 			seguirJugador = false;
 			animator.SetBool("estaCorriendo", false);
 			atacar = true;
@@ -99,9 +99,9 @@ public class Rival1 : MonoBehaviour
 		}
 	}
 
-	public void acomodarPersecucionEnY(Transform target){
-		Vector2 targetEnY = new Vector2(transform.position.x, target.position.y);
-		transform.position = Vector2.MoveTowards(transform.position, targetEnY, velocidad * Time.deltaTime);
+	public void acomodarPersecucionEnZ(Transform target){
+		Vector3 targetEnZ = new Vector3(transform.position.x, transform.position.y, target.position.z);
+		transform.position = Vector3.MoveTowards(transform.position, targetEnZ, velocidad * Time.deltaTime);
 	}
 
 	public float distanciaAObjetivo(Transform objetivo)
@@ -110,9 +110,9 @@ public class Rival1 : MonoBehaviour
 		return (transform.position - objetivo.position).sqrMagnitude;
 	}
 
-	public float distanciaAObjetivoEnElEjeY(Transform objetivo)
+	public float distanciaAObjetivoEnElEjeZ(Transform objetivo)
 	{
-		return Mathf.Abs(transform.position.y - objetivo.position.y);
+		return Mathf.Abs(transform.position.z - objetivo.position.z);
 	}
 
 	public void perseguir(Transform target)
@@ -121,7 +121,7 @@ public class Rival1 : MonoBehaviour
 		float direccionX = Mathf.Sign(target.position.x - transform.position.x);
 		transform.localScale = new Vector3(direccionX, 1f, 1f);
 
-		transform.position = Vector2.MoveTowards(transform.position, target.position, velocidad * Time.deltaTime);
+		transform.position = Vector3.MoveTowards(transform.position, target.position, velocidad * Time.deltaTime);
 		animator.SetBool("estaCorriendo", true);
 
 	}
