@@ -8,9 +8,10 @@ public class Rival1 : MonoBehaviour
 	private Animator animator;
 	private bool seguirJugador = true, atacar = false;
 	private List<GameObject> jugadoresObjetivos;
-	public float distanciaDeAtaque = 1f, tiempoPorDefectoDeAtaque = 2f;
+	public float distanciaDeAtaque = 1f, rangoPerseguirJugadorDespuesDeAtaque = 4f, 
+				 tiempoPorDefectoDeAtaque = 2f, velocidad = 3f;
 	private float tiempoActualDeAtaque;
-	private Transform jugadorObjetivo;
+	private Transform jugadorObjetivo = null;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class Rival1 : MonoBehaviour
 		rigidBody2D = GetComponent<Rigidbody2D> ();
 		jugadoresObjetivos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
 
-		jugadorObjetivo = jugadoresObjetivos[(int)Random.Range(0f, jugadoresObjetivos.Count)].transform;
+		//jugadorObjetivo = jugadoresObjetivos[(int)Random.Range(0f, jugadoresObjetivos.Count)].transform;
     }
 
     // Update is called once per frame
@@ -33,7 +34,10 @@ public class Rival1 : MonoBehaviour
 
 		else
 		{
-			jugadorObjetivo = jugadoresObjetivos[(int)Random.Range(0f, jugadoresObjetivos.Count)].transform;
+			bool hayJugadoresAPerseguir = !jugadoresObjetivos.Count.Equals(0);
+			if(hayJugadoresAPerseguir){
+				jugadorObjetivo = jugadoresObjetivos[(int)Random.Range(0f, jugadoresObjetivos.Count)].transform;
+			}
 		}
     }
 
@@ -57,32 +61,19 @@ public class Rival1 : MonoBehaviour
 
 		if (distanciaAObjetivo(objetivo) > distanciaDeAtaque)
 		{
-			/*
-				float sentidoADondeIr = Mathf.Sign(transform.position.x - objetivo.position.x);
-				Debug.Log(sentidoADondeIr);
-				transform.localScale = new Vector3(sentidoADondeIr, 1f, 1f);
-			*/
-
-			//rota el transform, asi el vector "forward" apunta a la posicion actual del objetivo
-			LookAt2D(objetivo);
-			//transform.LookAt(objetivo);
-
-			//transform.LookAt(objetivo);
-			//forward da como el vector direccion
-			rigidBody2D.velocity = Vector3.forward * 2f;
-
-			if (rigidBody2D.velocity.sqrMagnitude != 0)
-			{
-				animator.SetBool("estaCaminando", true);
-			}
-
+			perseguir(objetivo);
 		}
 
 		else
 		{
+			if(distanciaAObjetivoEnElEjeY(jugadorObjetivo) > 0.1f){
+				acomodarPersecucionEnY(jugadorObjetivo);
+				return;
+			}
+
 			rigidBody2D.velocity = new Vector2(0f, 0f);
 			seguirJugador = false;
-			animator.SetBool("estaCaminando", false);
+			animator.SetBool("estaCorriendo", false);
 			atacar = true;
 		}
 		
@@ -100,24 +91,38 @@ public class Rival1 : MonoBehaviour
 			tiempoActualDeAtaque = 0f;
 		}
 
-		if (distanciaAObjetivo(jugadorObjetivo) > distanciaDeAtaque)
+		//rangoPerseguirJugadorDespuesDeAtaque le da cierto rango para que pueda escapar el jugador
+		if (distanciaAObjetivo(jugadorObjetivo) > distanciaDeAtaque + rangoPerseguirJugadorDespuesDeAtaque)
 		{
 			seguirJugador = true;
 			atacar = false;
 		}
 	}
 
+	public void acomodarPersecucionEnY(Transform target){
+		Vector2 targetEnY = new Vector2(transform.position.x, target.position.y);
+		transform.position = Vector2.MoveTowards(transform.position, targetEnY, velocidad * Time.deltaTime);
+	}
+
 	public float distanciaAObjetivo(Transform objetivo)
 	{
+		//return Mathf.Abs(transform.position.x - objetivo.position.x);
 		return (transform.position - objetivo.position).sqrMagnitude;
 	}
 
-	//Fixme arreglar esto para que funcion como el lookat en 3D
-	public void LookAt2D(Transform target)
+	public float distanciaAObjetivoEnElEjeY(Transform objetivo)
 	{
+		return Mathf.Abs(transform.position.y - objetivo.position.y);
+	}
+
+	public void perseguir(Transform target)
+	{
+		//hago que el sprite del  rival mire hacia donde esta el target
 		float direccionX = Mathf.Sign(target.position.x - transform.position.x);
 		transform.localScale = new Vector3(direccionX, 1f, 1f);
 
-		transform.right = target.position - transform.position;
+		transform.position = Vector2.MoveTowards(transform.position, target.position, velocidad * Time.deltaTime);
+		animator.SetBool("estaCorriendo", true);
+
 	}
 }
