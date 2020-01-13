@@ -73,6 +73,7 @@ public class Jugador : MonoBehaviour
 
 	void chequearSaltar(){
 		if(Input.GetKeyDown (KeyCode.K) && tocandoPiso){
+			rigidBody.velocity = Vector3.zero;
 			rigidBody.AddForce(Vector3.up * poderDeSalto);
 		}
 
@@ -111,25 +112,32 @@ public class Jugador : MonoBehaviour
 	}
 
 	void chequearGolpe(){
-		if (Input.GetKeyDown (KeyCode.L)) {
+		if (Input.GetKeyDown(KeyCode.L) && tocandoPiso)
+		{
 			reinicioDeComboTimer = true;
 			//tiempoComboTimerActual = tiempoComboTimerDefault;
 			golpeActual++;
 
-			switch(golpeActual){
+			switch (golpeActual)
+			{
 				case (Ataque.GOLPEDERECHO):
-					animator.SetTrigger ("golpeDerecho");
+					animator.SetTrigger("golpeDerecho");
 					break;
 				case (Ataque.GOLPEIZQUIERDO):
-					animator.SetTrigger ("golpeIzquierdo");
+					animator.SetTrigger("golpeIzquierdo");
 					break;
 				case (Ataque.PATADA):
-					animator.SetTrigger ("patada");
+					animator.SetTrigger("patada");
 					golpeActual = Ataque.NINGUNO;
 					break;
 				default:
 					break;
 			}
+		}
+
+		else if (Input.GetKeyDown(KeyCode.L) && !tocandoPiso)
+		{
+			animator.SetTrigger("patada");
 		}
 	}
 
@@ -183,7 +191,7 @@ public class Jugador : MonoBehaviour
 		 * para agarrar algunos decimales y el menos es porque cuanto mas abajo mayor 
 		 * orden de capa
 		*/
-		spriteRenderer.sortingOrder = -(int)(transform.position.y * 100);
+		spriteRenderer.sortingOrder = -(int)(transform.position.z * 100);
 	}
 
 	void setearAnimaciones(){
