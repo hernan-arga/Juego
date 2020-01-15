@@ -17,8 +17,8 @@ public class Rival1 : MonoBehaviour
 	private Ataque golpeActual = Ataque.NINGUNO;
 	private bool isDead = false, daniado = false;
 	public float damageTime = 0.3f;
-	private float damageTimer;
-	public int maxSalud;
+	private float damageTimer = 0f;
+	public int maxSalud = 10;
 	private int saludActual;
 
 	// Start is called before the first frame update
@@ -53,8 +53,7 @@ public class Rival1 : MonoBehaviour
 			}
 		}
 
-		animator.SetBool("Dead", isDead);
-		animator.SetBool("OnGround", tocandoPiso);
+		//animator.SetBool("OnGround", tocandoPiso);
 
 		if (daniado && !isDead)
 		{
@@ -194,23 +193,33 @@ public class Rival1 : MonoBehaviour
 
 	}
 
-	public void recibirDanio(int danio)
+	public void recibirDanio(int danio, bool golpeadoPorIzq)
 	{
 		if (!isDead)
 		{
 			daniado = true;
 			saludActual -= danio;
-			Debug.Log(saludActual);
-			animator.SetTrigger("daniado");
 			if (saludActual <= 0f)
 			{
+				if (golpeadoPorIzq)
+				{
+					animator.SetTrigger("matadoPorIzq");
+				}
+				else
+				{
+					animator.SetTrigger("matadoPorDer");
+				}
+
 				isDead = true;
 				rigidBody.AddRelativeForce(new Vector3(3f, 5f, 0f), ForceMode.Impulse);
+			}
+			else
+			{
+				animator.SetTrigger("daniado");
 			}
 		}
 	}
 
-	//TODO: cuando haga la animacion de morir llamo a esta funcion en el final
 	public void DesactivarEnemigo()
 	{
 		gameObject.SetActive(false);
@@ -223,8 +232,10 @@ public class Rival1 : MonoBehaviour
 		 * para agarrar algunos decimales y el menos es porque cuanto mas abajo mayor 
 		 * orden de capa
 		*/
-		spriteRenderer.sortingOrder = -(int)(transform.position.z * 100);	}
+		spriteRenderer.sortingOrder = -(int)(transform.position.z * 100);
+	}
 
+	//TODO: ver si preciso esto o no
 	void OnCollisionEnter(Collision col)
 	{
 		if (col.gameObject.tag == "Piso")
@@ -246,5 +257,6 @@ public class Rival1 : MonoBehaviour
 		if (col.gameObject.tag == "Piso")
 		{
 			tocandoPiso = false;
-		}	}
+		}
+	}
 }

@@ -6,30 +6,32 @@ public class Attack : MonoBehaviour
 {
 	public int danio;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-		
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	}
 
-	//fixme: esto no esta agarrando
+	// Update is called once per frame
+	void Update()
+	{
+
+	}
+
 	void OnCollisionEnter(Collision col)
 	{
-		Debug.Log("Golpeando");	}
+		Rival1 rival = col.collider.GetComponent<Rival1>();
+		Jugador jugador = col.collider.GetComponent<Jugador>();
+		bool golpeoPorIzq = (transform.position.x - col.transform.position.x) < 0;
 
-	/*void OnCollisionEnter (Collision otro)
-	{
-		Debug.Log("Golpeando");
-		Rival1 rival = otro.collider.GetComponent<Rival1>();
 		if (rival != null)
 		{
-			rival.recibirDanio(danio);
+			rival.recibirDanio(danio, golpeoPorIzq);
 		}
-	}*/
+
+		else if (jugador != null)
+		{
+			jugador.recibirDanio(danio, golpeoPorIzq);
+		}
+	}
 }

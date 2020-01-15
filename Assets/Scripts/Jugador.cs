@@ -37,6 +37,12 @@ public class Jugador : MonoBehaviour
 	public float distanciaMinimaParaLevantar1Objeto;
 	Vector3 control;
 
+	private bool isDead = false, daniado = false;
+	public float damageTime = 0.3f;
+	private float damageTimer = 0f;
+	public int maxSalud = 10;
+	private int saludActual;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -47,22 +53,35 @@ public class Jugador : MonoBehaviour
 
 		tiempoComboTimerActual = tiempoComboTimerDefault;
 		golpeActual = Ataque.NINGUNO;
+		saludActual = maxSalud;
 	}
-	
 
+	void Update()
+	{
+		if (daniado && !isDead)
+		{
+			damageTimer += Time.deltaTime;
+			if (damageTimer >= damageTime)
+			{
+				daniado = false;
+				damageTimer = 0f;
+			}
+		}
+	}
 
 	void FixedUpdate ()
 	{
-		
-		chequearMoverse ();
-		chequearGolpe ();
-		chequearLevantarItem();
-		chequearTirarItem ();
-		chequearSaltar();
-		reiniciarComboTimer();
-		controlarOrdenDeCapa ();
-		setearAnimaciones ();
-
+		if (!isDead && !daniado)
+		{
+			chequearMoverse();
+			chequearGolpe();
+			chequearLevantarItem();
+			chequearTirarItem();
+			chequearSaltar();
+			reiniciarComboTimer();
+			controlarOrdenDeCapa();
+			setearAnimaciones();
+		}
 
 		//Defino el maximo espacio en el que se puede mover el personaje
 		float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0,0,10)).x;
@@ -230,7 +249,36 @@ public class Jugador : MonoBehaviour
 		animator.SetTrigger("esGolpeadoPorAdelante");
 	}
 
+	public void recibirDanio(int danio, bool golpeadoPorIzq)
+	{
+		if (!isDead)
+		{
+			daniado = true;
+			saludActual -= danio;
+			if (saludActual <= 0f)
+			{
+				if (golpeadoPorIzq)
+				{
+					animator.SetTrigger("matadoPorIzq");
+				}
+				else
+				{
+					animator.SetTrigger("matadoPorDer");
+				}
 
+				isDead = true;
+				rigidBody.AddRelativeForce(new Vector3(3f, 5f, 0f), ForceMode.Impulse);
+			}
+			else
+			{
+				animator.SetTrigger("daniado");
+			}
+		}	}
+
+	//TODO: aparte de desactivarse supongo que tendria que volver a la pantalla principal o algo
+	public void Morir()
+	{
+		gameObject.SetActive(false);	}
 
 	void OnCollisionEnter(Collision col)
 	{

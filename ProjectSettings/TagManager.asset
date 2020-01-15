@@ -16,10 +16,10 @@ TagManager:
   - 
   - 
   - Item
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - PlayerHit
+  - Enemy
+  - EnemyHit
   - 
   - 
   - 
