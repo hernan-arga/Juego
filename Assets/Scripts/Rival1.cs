@@ -21,6 +21,9 @@ public class Rival1 : MonoBehaviour
 	public int maxSalud = 10;
 	private int saludActual;
 
+	public string nombre;
+	public Sprite avatar;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -210,6 +213,7 @@ public class Rival1 : MonoBehaviour
 					animator.SetTrigger("matadoPorDer");
 				}
 
+				saludActual = 0;
 				isDead = true;
 				rigidBody.AddRelativeForce(new Vector3(3f, 5f, 0f), ForceMode.Impulse);
 			}
@@ -217,6 +221,9 @@ public class Rival1 : MonoBehaviour
 			{
 				animator.SetTrigger("daniado");
 			}
+
+			FindObjectOfType<UIManager>().updateEnemyUi(maxSalud, saludActual, nombre, avatar);
+
 		}
 	}
 

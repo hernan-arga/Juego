@@ -35,6 +35,8 @@ public class Jugador : MonoBehaviour
 	public float tiempoComboTimerDefault = 0.4f;
 	public float modificadorDeAceleracion;
 	public float distanciaMinimaParaLevantar1Objeto;
+	public string nombre;
+	public Sprite avatar;
 	Vector3 control;
 
 	private bool isDead = false, daniado = false;
@@ -266,6 +268,7 @@ public class Jugador : MonoBehaviour
 					animator.SetTrigger("matadoPorDer");
 				}
 
+				saludActual = 0;
 				isDead = true;
 				rigidBody.AddRelativeForce(new Vector3(3f, 5f, 0f), ForceMode.Impulse);
 			}
@@ -273,12 +276,17 @@ public class Jugador : MonoBehaviour
 			{
 				animator.SetTrigger("daniado");
 			}
-		}	}
+
+			FindObjectOfType<UIManager>().updateHealth(saludActual);
+
+		}
+	}
 
 	//TODO: aparte de desactivarse supongo que tendria que volver a la pantalla principal o algo
 	public void Morir()
 	{
-		gameObject.SetActive(false);	}
+		gameObject.SetActive(false);
+	}
 
 	void OnCollisionEnter(Collision col)
 	{
