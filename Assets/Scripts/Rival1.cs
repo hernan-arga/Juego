@@ -6,8 +6,8 @@ public class Rival1 : MonoBehaviour
 {
 	private SpriteRenderer spriteRenderer;
 	private Rigidbody rigidBody;
-	private Animator animator;
-	private bool seguirJugador = true, atacar = false, tocandoPiso = false;
+	protected Animator animator;
+	private bool seguirJugador = true, atacar = false;
 	private List<GameObject> jugadoresObjetivos;
 	public float distanciaDePersecucionEnX = 1f, distanciaDePersecucionEnZ = 1f, rangoPerseguirJugadorDespuesDeAtaque = 4f,
 				 tiempoPorDefectoDeAtaque = 2f, velocidad = 3f, minHeight, maxHeight;
@@ -15,7 +15,8 @@ public class Rival1 : MonoBehaviour
 	private Transform jugadorObjetivo = null;
 
 	private Ataque golpeActual = Ataque.NINGUNO;
-	private bool isDead = false, daniado = false;
+	protected bool isDead = false;
+	private bool daniado = false;
 	public float damageTime = 0.3f;
 	private float damageTimer = 0f;
 	public int maxSalud = 10;
@@ -243,7 +244,7 @@ public class Rival1 : MonoBehaviour
 	}
 
 	//TODO: ver si preciso esto o no
-	void OnCollisionEnter(Collision col)
+	/*void OnCollisionEnter(Collision col)
 	{
 		if (col.gameObject.tag == "Piso")
 		{
@@ -265,5 +266,5 @@ public class Rival1 : MonoBehaviour
 		{
 			tocandoPiso = false;
 		}
-	}
+	}*/
 }
