@@ -24,13 +24,9 @@ public class Boss1 : MonoBehaviour
 	{
 		if (!isDead)
 		{
-			Quaternion rotacionLlamarada = Quaternion.Euler(30f, -90f, 0f);
-			fuegoInvocado = Instantiate(llamaradas, transform.position - 1.5f * Vector3.right, rotacionLlamarada);
+			Quaternion rotacionLlamarada = Quaternion.Euler(0f, -120f, 0f);
+			fuegoInvocado = Instantiate(llamaradas, transform.position + 2f*Vector3.left + 0.2f*Vector3.down, rotacionLlamarada);
 		}
 	}
 
-	void terminarFuego()
-	{
-		Destroy(fuegoInvocado);
-	}
 }

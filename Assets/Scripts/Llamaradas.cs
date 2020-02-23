@@ -5,11 +5,16 @@ using UnityEngine;
 public class Llamaradas : MonoBehaviour
 {
 	public float tiempoATardarEnGirarLaLlamarada = 1f;
-	public float valorInicialDeRotacion = 30f;
-	public float valorFinalDeRotacion = -30f;
+	public float valorInicialDeRotacion = -120f;
+	public float valorFinalDeRotacion = -60f;
+	public float danio = 0.1f;
+	private ParticleSystem ps;
+
+
     // Start is called before the first frame update
     void Start()
     {
+		ps = GetComponent<ParticleSystem>();
 		StartCoroutine(GirarLlamarada(valorInicialDeRotacion, valorFinalDeRotacion, true));	//inicia la rutina del IEnumerator girando hacia arriba
         //StartCoroutine(GirarLlamarada(valorInicialDeRotacion));	//vuelve a la posicion inicial
 
@@ -18,12 +23,15 @@ public class Llamaradas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		//girarLlamarada();
+		if(!ps.IsAlive())
+         {
+             Destroy(gameObject);
+         }
     }
 
 
 	//El yield corta la funcion para volver a ser llamada en esa posicion durante el siguiente frame (como si fuera un hilo)
-	private IEnumerator GirarLlamarada(float desdeDondeRotar, float hastaDondeRotar, bool haciaArriba)
+	private IEnumerator GirarLlamarada(float desdeDondeRotar, float hastaDondeRotar, bool tieneQueVolverALaPosicionInicial)
 	{
 		Vector3 startRot = transform.rotation.eulerAngles;
 		float lerpPorcentaje = 0f;
@@ -37,23 +45,31 @@ public class Llamaradas : MonoBehaviour
 			lerpPorcentaje += Time.deltaTime * rateTiempo;	
 			transform.rotation = Quaternion.Euler(
 					 new Vector3(
-					 	Mathf.Lerp(desdeDondeRotar, hastaDondeRotar, lerpPorcentaje),
-						startRot.y,
-						startRot.z));   //En z y en y no gira
-			Debug.Log("start "+desdeDondeRotar+" hasta "+hastaDondeRotar+" resultado "+
-			          Mathf.Lerp(desdeDondeRotar, hastaDondeRotar, lerpPorcentaje));
+						startRot.x,
+						Mathf.Lerp(desdeDondeRotar, hastaDondeRotar, lerpPorcentaje),
+						startRot.z));   //En z y en x no gira
 			yield return 0;	//Aca corta por este frame
 		}
 
-		if (haciaArriba)
+		if (tieneQueVolverALaPosicionInicial)
 		{
-			//fixme: lerpPorcentaje tiene que ser negativo
-			StartCoroutine(GirarLlamarada(valorInicialDeRotacion, valorFinalDeRotacion, false));
+			StartCoroutine(GirarLlamarada(valorFinalDeRotacion, valorInicialDeRotacion, false));
 		}
 
 		/*si me llego a perder en algo leer: 
 		* https://arjierdagames.com/blog/unity/que-es-el-lerp-y-como-usarlo-correctamente/
 		*/
 	}
+
+	void OnParticleCollision(GameObject col)
+	{
+
+		Jugador jugador = col.GetComponent<Jugador>();
+		bool golpeoPorIzq = (transform.position.x - col.transform.position.x) < 0;
+
+		if (jugador != null)
+		{
+			jugador.recibirDanio(danio, golpeoPorIzq);
+		}	}
 
 }

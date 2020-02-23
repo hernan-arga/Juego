@@ -39,12 +39,12 @@ public class UIManager : MonoBehaviour
 		}
     }
 
-	public void updateHealth(int cantidad)
+	public void updateHealth(float cantidad)
 	{
 		healthUI.value = cantidad;
 	}
 
-	public void updateEnemyUi(int maxSalud, int saludActual, string nombre, Sprite avatar)
+	public void updateEnemyUi(float maxSalud, float saludActual, string nombre, Sprite avatar)
 	{
 		enemySlider.maxValue = maxSalud;
 		enemySlider.value = saludActual;

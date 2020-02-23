@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-	public int danio;
+	public float danio;
 
 	// Start is called before the first frame update
 	void Start()
@@ -18,7 +18,8 @@ public class Attack : MonoBehaviour
 
 	}
 
-	void OnCollisionEnter(Collision col)
+	//virtual: The virtual keyword is used to modify a method and allow for it to be overridden in a derived class.
+	protected virtual void OnCollisionEnter(Collision col)
 	{
 		Rival1 rival = col.collider.GetComponent<Rival1>();
 		Jugador jugador = col.collider.GetComponent<Jugador>();

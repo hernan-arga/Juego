@@ -125,7 +125,7 @@ MonoBehaviour:
   minHeight: -2.5
   maxHeight: 9
   damageTime: 0.5
-  maxSalud: 10
+  maxSalud: 5
   nombre: Secuaz
   avatar: {fileID: 21300000, guid: 3916aac7a9daadf4e9def467e41f2d98, type: 3}
 --- !u!136 &7312887429021327926

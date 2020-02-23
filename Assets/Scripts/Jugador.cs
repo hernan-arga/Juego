@@ -42,8 +42,8 @@ public class Jugador : MonoBehaviour
 	private bool isDead = false, daniado = false;
 	public float damageTime = 0.3f;
 	private float damageTimer = 0f;
-	public int maxSalud = 10;
-	private int saludActual;
+	public float maxSalud = 10f;
+	private float saludActual;
 
 	// Use this for initialization
 	void Start ()
@@ -251,7 +251,7 @@ public class Jugador : MonoBehaviour
 		animator.SetTrigger("esGolpeadoPorAdelante");
 	}
 
-	public void recibirDanio(int danio, bool golpeadoPorIzq)
+	public void recibirDanio(float danio, bool golpeadoPorIzq)
 	{
 		if (!isDead)
 		{
@@ -268,7 +268,7 @@ public class Jugador : MonoBehaviour
 					animator.SetTrigger("matadoPorDer");
 				}
 
-				saludActual = 0;
+				saludActual = 0f;
 				isDead = true;
 				rigidBody.AddRelativeForce(new Vector3(3f, 5f, 0f), ForceMode.Impulse);
 			}
