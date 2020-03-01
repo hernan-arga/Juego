@@ -6,7 +6,6 @@ abstract public class Enemigo : MonoBehaviour
 {
 	public string nombre;
 	public Sprite avatar;
-	protected Ataque golpeActual = Ataque.NINGUNO;
 	protected bool isDead = false;
 	protected bool daniado = false;
 	public float damageTime = 0.3f;
@@ -26,10 +25,6 @@ abstract public class Enemigo : MonoBehaviour
 		rigidBody = GetComponent<Rigidbody>();
         saludActual = maxSalud;
     }
-
-	/*protected virtual void Awake()
-	{
-	}*/
 
     // Update is called once per frame
     void Update()
@@ -55,26 +50,10 @@ abstract public class Enemigo : MonoBehaviour
 		}
 	}
 
-	public void golpear()
+	protected virtual void golpear()
 	{
-		golpeActual++;
-
-		switch (golpeActual)
-		{
-			case (Ataque.GOLPEDERECHO):
-				animator.SetTrigger("golpeDerecho");
-				break;
-			case (Ataque.GOLPEIZQUIERDO):
-				animator.SetTrigger("golpeIzquierdo");
-				golpeActual = Ataque.NINGUNO;
-				break;
-			/*case (Ataque.PATADA):
-				animator.SetTrigger("patada");
-				golpeActual = Ataque.NINGUNO;
-				break;*/
-			default:
-				break;
-		}	}
+		//Cada enemigo implementa el suyo
+	}
 
 	public void recibirDanio(float danio, bool golpeadoPorIzq)
 	{
@@ -104,9 +83,11 @@ abstract public class Enemigo : MonoBehaviour
 
 			FindObjectOfType<UIManager>().updateEnemyUi(maxSalud, saludActual, nombre, avatar);
 
-		}	}
+		}
+	}
 
 	public void Morir()
 	{
-		Destroy(gameObject);	}
+		Destroy(gameObject);
+	}
 }

@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AtaqueDeBoss1
+{
+	NINGUNO, LLAMARADA, VUELOYPIEDRAS
+}
+
 public class Boss1 : Enemigo
 {
+	private AtaqueDeBoss1 golpeActual = AtaqueDeBoss1.NINGUNO;
 	public GameObject llamaradas;
 	private GameObject fuegoInvocado;
-
+	private float tiempoTranscurridoVolando = 0f;
+	private bool vuelo = false;
 	public RockSpawn tiradorDeRocas;
+	public float maximaAlturaDeVuelo;
 
     // Start is called before the first frame update
 	protected override void Start()
@@ -18,9 +26,15 @@ public class Boss1 : Enemigo
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyUp(KeyCode.H))
+		if (!isDead)
 		{
-			animator.SetTrigger("tocoPiso");
+			atacarJugador();
+
+			if (vuelo)
+			{
+				controlarVuelo();
+			}
+
 		}
     }
 
@@ -43,6 +57,52 @@ public class Boss1 : Enemigo
 
 	}
 
+	protected override void golpear()
+	{
+		golpeActual++;
 
+		switch (golpeActual)
+		{
+			case (AtaqueDeBoss1.LLAMARADA):
+				animator.SetTrigger("llamarada");
+				break;
+			case (AtaqueDeBoss1.VUELOYPIEDRAS):
+				animator.SetBool("volando", true);
+				vuelo = true;
+				golpeActual = AtaqueDeBoss1.NINGUNO;
+				break;
+			/*case (Ataque.PATADA):
+				animator.SetTrigger("patada");
+				golpeActual = Ataque.NINGUNO;
+				break;*/
+			default:
+				break;
+		}	}
+
+	//Fixme: esto es super forzado, ver si queda mejor planteando una ruta que seguir
+	private void controlarVuelo()
+	{
+		tiempoTranscurridoVolando += Time.deltaTime;
+		if (transform.position.y < maximaAlturaDeVuelo)
+		{
+			Debug.Log("Fuerza");
+			Vector3 fuerzaAAplicar = new Vector3(0,
+										 200f,
+										 0);
+			rigidBody.AddForce(fuerzaAAplicar);
+		}
+
+		else
+		{
+			animator.SetBool("volando", false);
+		}
+	}
+
+	/*void OnCollisionEnter(Collision col)
+	{
+		if (col.gameObject.tag == "Piso")
+		{
+			animator.SetTrigger("tocoPiso");
+		}	}*/
 
 }

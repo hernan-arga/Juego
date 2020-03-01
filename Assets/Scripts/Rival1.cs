@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Rival1 : Enemigo
 {
-
+	private Ataque golpeActual = Ataque.NINGUNO;
 	private bool seguirJugador = true, atacar = false;
 	private List<GameObject> jugadoresObjetivos;
 	public float distanciaDePersecucionEnX = 1f, distanciaDePersecucionEnZ = 1f, rangoPerseguirJugadorDespuesDeAtaque = 4f,
@@ -155,6 +155,27 @@ public class Rival1 : Enemigo
 		*/
 		spriteRenderer.sortingOrder = -(int)(transform.position.z * 100);
 	}
+
+	protected override void golpear()
+	{
+		golpeActual++;
+
+		switch (golpeActual)
+		{
+			case (Ataque.GOLPEDERECHO):
+				animator.SetTrigger("golpeDerecho");
+				break;
+			case (Ataque.GOLPEIZQUIERDO):
+				animator.SetTrigger("golpeIzquierdo");
+				golpeActual = Ataque.NINGUNO;
+				break;
+			/*case (Ataque.PATADA):
+				animator.SetTrigger("patada");
+				golpeActual = Ataque.NINGUNO;
+				break;*/
+			default:
+				break;
+		}	}
 
 
 }
