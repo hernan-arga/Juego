@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Piedra2
+  m_Controller: {fileID: 9100000, guid: a6cc865d88d3a2f41aeee8dd6130431d, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 58aaa7b9082cd8e4eb0e6a77a70f6333, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fe1db6e94f776bd4b8f626267dce68ba, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c2fdb36a8de16d54fa295927d85cc670, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 55151397a225e524f9d1d1fb6bcc0c99, type: 2}

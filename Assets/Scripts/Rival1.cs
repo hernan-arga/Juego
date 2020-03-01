@@ -2,38 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rival1 : MonoBehaviour
+public class Rival1 : Enemigo
 {
-	private SpriteRenderer spriteRenderer;
-	private Rigidbody rigidBody;
-	protected Animator animator;
+
 	private bool seguirJugador = true, atacar = false;
 	private List<GameObject> jugadoresObjetivos;
 	public float distanciaDePersecucionEnX = 1f, distanciaDePersecucionEnZ = 1f, rangoPerseguirJugadorDespuesDeAtaque = 4f,
-				 tiempoPorDefectoDeAtaque = 2f, velocidad = 3f, minHeight, maxHeight;
-	private float tiempoActualDeAtaque;
+				 velocidad = 3f, minHeight, maxHeight;
 	private Transform jugadorObjetivo = null;
 
-	private Ataque golpeActual = Ataque.NINGUNO;
-	protected bool isDead = false;
-	private bool daniado = false;
-	public float damageTime = 0.3f;
-	private float damageTimer = 0f;
-	public float maxSalud = 10f;
-	private float saludActual;
-
-	public string nombre;
-	public Sprite avatar;
-
 	// Start is called before the first frame update
-	void Start()
+	protected override void Start()
 	{
-		spriteRenderer = GetComponent<SpriteRenderer>();
-		tiempoActualDeAtaque = tiempoPorDefectoDeAtaque;
-		animator = gameObject.GetComponentInParent<Animator>();
-		rigidBody = GetComponent<Rigidbody>();
+		base.Start();
 		jugadoresObjetivos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
-		saludActual = maxSalud;
 		//jugadorObjetivo = jugadoresObjetivos[(int)Random.Range(0f, jugadoresObjetivos.Count)].transform;
 	}
 
@@ -59,15 +41,7 @@ public class Rival1 : MonoBehaviour
 
 		//animator.SetBool("OnGround", tocandoPiso);
 
-		if (daniado && !isDead)
-		{
-			damageTimer += Time.deltaTime;
-			if (damageTimer >= damageTime)
-			{
-				daniado = false;
-				damageTimer = 0f;
-			}
-		}
+
 	}
 
 	void FixedUpdate()
@@ -127,17 +101,12 @@ public class Rival1 : MonoBehaviour
 		return distanciaAObjetivoEnElEjeX(objetivo) > distanciaDePersecucionEnX + rangoExtra || distanciaAObjetivoEnElEjeZ(objetivo) > distanciaDePersecucionEnZ + rangoExtra;
 	}
 
-	public void atacarJugador()
+	protected override void atacarJugador()
 	{
 		if (!atacar)
 			return;
 
-		tiempoActualDeAtaque += Time.deltaTime;
-		if (tiempoActualDeAtaque > tiempoPorDefectoDeAtaque)
-		{
-			golpear();
-			tiempoActualDeAtaque = 0f;
-		}
+		base.atacarJugador();
 
 		//rangoPerseguirJugadorDespuesDeAtaque le da cierto rango para que pueda escapar el jugador
 		if (cumpleDistanciaParaPerseguir(jugadorObjetivo, rangoPerseguirJugadorDespuesDeAtaque))
@@ -147,27 +116,6 @@ public class Rival1 : MonoBehaviour
 		}
 	}
 
-	public void golpear()
-	{
-		golpeActual++;
-
-		switch (golpeActual)
-		{
-			case (Ataque.GOLPEDERECHO):
-				animator.SetTrigger("golpeDerecho");
-				break;
-			case (Ataque.GOLPEIZQUIERDO):
-				animator.SetTrigger("golpeIzquierdo");
-				golpeActual = Ataque.NINGUNO;
-				break;
-			/*case (Ataque.PATADA):
-				animator.SetTrigger("patada");
-				golpeActual = Ataque.NINGUNO;
-				break;*/
-			default:
-				break;
-		}
-	}
 
 	public void acomodarPersecucionEnZ(Transform target)
 	{
@@ -197,41 +145,6 @@ public class Rival1 : MonoBehaviour
 
 	}
 
-	public void recibirDanio(float danio, bool golpeadoPorIzq)
-	{
-		if (!isDead)
-		{
-			daniado = true;
-			saludActual -= danio;
-			if (saludActual <= 0f)
-			{
-				if (golpeadoPorIzq)
-				{
-					animator.SetTrigger("matadoPorIzq");
-				}
-				else
-				{
-					animator.SetTrigger("matadoPorDer");
-				}
-
-				saludActual = 0f;
-				isDead = true;
-				rigidBody.AddRelativeForce(new Vector3(3f, 5f, 0f), ForceMode.Impulse);
-			}
-			else
-			{
-				animator.SetTrigger("daniado");
-			}
-
-			FindObjectOfType<UIManager>().updateEnemyUi(maxSalud, saludActual, nombre, avatar);
-
-		}
-	}
-
-	public void DesactivarEnemigo()
-	{
-		gameObject.SetActive(false);
-	}
 
 	void controlarOrdenDeCapa()
 	{
@@ -243,28 +156,5 @@ public class Rival1 : MonoBehaviour
 		spriteRenderer.sortingOrder = -(int)(transform.position.z * 100);
 	}
 
-	//TODO: ver si preciso esto o no
-	/*void OnCollisionEnter(Collision col)
-	{
-		if (col.gameObject.tag == "Piso")
-		{
-			tocandoPiso = true;
-		}
-	}
 
-	void OnCollisionStay(Collision col)
-	{
-		if (col.gameObject.tag == "Piso")
-		{
-			tocandoPiso = true;
-		}
-	}
-
-	void OnCollisionExit(Collision col)
-	{
-		if (col.gameObject.tag == "Piso")
-		{
-			tocandoPiso = false;
-		}
-	}*/
 }

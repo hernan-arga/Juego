@@ -6,10 +6,10 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Piedra
+  m_Name: Piedra3
   m_Controller: {fileID: 9100000, guid: a6cc865d88d3a2f41aeee8dd6130431d, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 58aaa7b9082cd8e4eb0e6a77a70f6333, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 58aaa7b9082cd8e4eb0e6a77a70f6333, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0200360f970c4ea4c895ec51b44a591f, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: c2fdb36a8de16d54fa295927d85cc670, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: c2fdb36a8de16d54fa295927d85cc670, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e113038f1408c7646a67fcd7adc8b25e, type: 2}
