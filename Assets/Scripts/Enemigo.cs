@@ -63,6 +63,8 @@ abstract public class Enemigo : MonoBehaviour
 			saludActual -= danio;
 			if (saludActual <= 0f)
 			{
+				float dondeCaer = 1f;
+
 				if (golpeadoPorIzq)
 				{
 					animator.SetTrigger("matadoPorIzq");
@@ -70,11 +72,12 @@ abstract public class Enemigo : MonoBehaviour
 				else
 				{
 					animator.SetTrigger("matadoPorDer");
+					dondeCaer = -1f;
 				}
 
 				saludActual = 0f;
 				isDead = true;
-				rigidBody.AddRelativeForce(new Vector3(3f, 5f, 0f), ForceMode.Impulse);
+				rigidBody.AddRelativeForce(new Vector3(3f*dondeCaer, 5f, 0f), ForceMode.Impulse);
 			}
 			else
 			{
@@ -86,7 +89,7 @@ abstract public class Enemigo : MonoBehaviour
 		}
 	}
 
-	public void Morir()
+	public virtual void Morir()
 	{
 		Destroy(gameObject);
 	}
