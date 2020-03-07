@@ -14,16 +14,20 @@ public class Llamaradas : MonoBehaviour
 	Quaternion rotacionFinalPorDerecha = Quaternion.Euler(0f, -60f, 0f);
 	Quaternion rotacionFinalPorIzquierda = Quaternion.Euler(0f, 60f, 0f);
 
+	private AudioSource audioSource;
+	public AudioClip fire;
+
     // Start is called before the first frame update
     void Start()
     {
-		
+		audioSource = GetComponent<AudioSource>();
+
 		startRot = transform.rotation;
 		configurarRotacionFinal();
 		//Debug.Log(startRot.eulerAngles + " - " + finalRot.eulerAngles);
 
         StartCoroutine(GirarLlamarada(startRot, finalRot, true));	//inicia la rutina del IEnumerator girando hacia arriba
-
+		PlaySound(fire);
 		ps = GetComponent<ParticleSystem>();
     }
 
@@ -92,5 +96,10 @@ public class Llamaradas : MonoBehaviour
 			jugador.recibirDanio(danio, golpeoPorIzq);
 		}
 	}
+
+	public void PlaySound(AudioClip song)
+	{
+		audioSource.clip = song;
+		audioSource.Play();	}
 
 }

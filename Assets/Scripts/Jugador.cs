@@ -45,6 +45,9 @@ public class Jugador : MonoBehaviour
 	public float maxSalud = 10f;
 	private float saludActual;
 
+	private AudioSource audioSource;
+	public AudioClip footstep;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -52,7 +55,7 @@ public class Jugador : MonoBehaviour
 		//gameObject == Self
 		animator = gameObject.GetComponentInParent<Animator> ();
 		rigidBody = GetComponent<Rigidbody> ();
-
+		audioSource = GetComponent<AudioSource>();
 		tiempoComboTimerActual = tiempoComboTimerDefault;
 		golpeActual = Ataque.NINGUNO;
 		saludActual = maxSalud;
@@ -310,6 +313,16 @@ public class Jugador : MonoBehaviour
 		{
 			tocandoPiso = false;
 		}
+	}
+
+	public void PlaySound(AudioClip song)
+	{
+		audioSource.clip = song;
+		audioSource.Play();	}
+
+	public void darPisada()
+	{
+		PlaySound(footstep);
 	}
 
 }

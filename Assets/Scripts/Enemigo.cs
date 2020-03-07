@@ -16,6 +16,9 @@ abstract public class Enemigo : MonoBehaviour
 	protected Rigidbody rigidBody;
 	protected Animator animator;
 
+	protected AudioSource audioSource;
+	public AudioClip footstep;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -23,6 +26,7 @@ abstract public class Enemigo : MonoBehaviour
 		tiempoActualDeAtaque = tiempoPorDefectoDeAtaque;
 		animator = GetComponent<Animator>();
 		rigidBody = GetComponent<Rigidbody>();
+		audioSource = GetComponent<AudioSource>();
         saludActual = maxSalud;
     }
 
@@ -93,4 +97,14 @@ abstract public class Enemigo : MonoBehaviour
 	{
 		Destroy(gameObject);
 	}
+
+	public void PlaySound(AudioClip song)
+	{
+		audioSource.clip = song;
+		audioSource.Play();
+	}
+
+	public void darPisada()
+	{
+		PlaySound(footstep);	}
 }

@@ -61,7 +61,7 @@ public class Boss1 : Enemigo
 			estaAterrizando = false;
 			tirarPiedras();
 			reiniciarPathVuelo();
-			tiempoActualDeAtaque = 0f;;
+			tiempoActualDeAtaque = 0f;
 		}
 	}
 

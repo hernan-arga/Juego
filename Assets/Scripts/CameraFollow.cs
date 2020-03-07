@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour {
+public class CameraFollow : MonoBehaviour
+{
 
 	public float xMargin = 1f; // Distance in the x axis the player can move before the camera follows.
 	public float xSmooth = 8f; // How smoothly the camera catches up with it's target movement in the x axis.
@@ -11,6 +12,7 @@ public class CameraFollow : MonoBehaviour {
 
 	private Transform m_Player; // Reference to the player's transform.
 	private bool sacudirCamara = false;
+	private float posicionInicialAntesDeSacudirLaCamara;
 
 	[SerializeField]
 	float shakeSpeed = 25f;
@@ -34,15 +36,20 @@ public class CameraFollow : MonoBehaviour {
 
 	private void Update()
 	{
+		if (sacudirCamara)
+		{
+			//Fixme: cuando se sacude y me pongo contra el borde izquierdo, la camara se mueve.
+			shakeCamera();
+		}
+
 		TrackPlayer();
 	}
 
 
 	private void TrackPlayer()
 	{
-		// By default the target x and y coordinates of the camera are it's current x and y coordinates.
+		// By default the target x coordinates of the camera are it's current x and y coordinates.
 		float targetX = transform.position.x;
-		float targetY = transform.position.y;
 
 		// If the player has moved beyond the x margin...
 		if (CheckXMargin())
@@ -56,12 +63,6 @@ public class CameraFollow : MonoBehaviour {
 
 		// Set the camera's position to the target position with the same z and y components.
 		transform.position = new Vector3(targetX, transform.position.y, transform.position.z);
-
-		if (sacudirCamara)
-		{
-			//Fixme: cuando se sacude y me pongo contra el borde izquierdo, la camara se mueve.
-			shakeCamera();
-		}
 	}
 
 	void shakeCamera()
@@ -71,17 +72,30 @@ public class CameraFollow : MonoBehaviour {
          * Mathf.PerlinNoise genera psuedo-random numeros entre 0 y 1 (parecen randoms pero hay un algoritmo detras).
 		 * Multiplico por 2 y resto 1 para pasar el rango de random de (0,1) a (-1,1)
 		*/
-		float movimientoRandom = (Mathf.PerlinNoise(0, Time.time * shakeSpeed)*2-1) * maximumTranslationShake;
+
+		float movimientoRandom = (Mathf.PerlinNoise(0, Time.time * shakeSpeed) * 2 - 1) * maximumTranslationShake;
+		float posicionEnX = transform.position.x;
+
+		//Clampeo hasta cierto margen para que la camara no se empieze a mover hacia atras cuando se sacude
+		posicionEnX = Mathf.Clamp(posicionEnX, posicionInicialAntesDeSacudirLaCamara, maxXAndY.x);
+		posicionEnX += movimientoRandom;
 
 		transform.localPosition = new Vector3(
-			transform.position.x+movimientoRandom,
-			Mathf.Clamp(transform.position.y+movimientoRandom, minXAndY.y, maxXAndY.y), 
-		    transform.position.z);
+				posicionEnX,
+			Mathf.Clamp(transform.position.y + movimientoRandom, minXAndY.y, maxXAndY.y),
+			transform.position.z);
 	}
 
 	public void setSacudirCamara(bool valor)
 	{
 		sacudirCamara = valor;
+		posicionInicialAntesDeSacudirLaCamara = transform.position.x;
 	}
+
+	public bool getSacudirCamara()
+	{
+		return sacudirCamara;
+	}
+
 }
 
