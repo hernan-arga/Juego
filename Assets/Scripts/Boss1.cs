@@ -44,6 +44,7 @@ public class Boss1 : Enemigo
     {
 		if (!isDead)
 		{
+			controlarOrdenDeCapa();
 			atacarJugador();
 
 			if (vuelo)
@@ -53,6 +54,11 @@ public class Boss1 : Enemigo
 
 		}
     }
+
+	void controlarOrdenDeCapa()
+	{
+		//Para que el jugador no parezca que lo esta pisando
+		spriteRenderer.sortingOrder = -(int)(transform.position.z * 90);	}
 
 	void OnCollisionEnter(Collision col)
 	{

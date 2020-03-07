@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
 	public Slider healthUI;
 	public Image playerImage;
-	public Text playerName;
+	public TextMeshProUGUI playerName;
 
 	public GameObject enemyUi;
 	public Slider enemySlider;
-	public Text enemyName;
+	public TextMeshProUGUI enemyName;
 	public Image enemyImage;
 	public float enemyUiTime = 4f;
 
