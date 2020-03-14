@@ -8,6 +8,7 @@ TagManager:
   - Piso
   - Path Flying
   - Node
+  - ItemSalud
   layers:
   - Default
   - TransparentFX

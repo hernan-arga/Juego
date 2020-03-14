@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Linq;
 
 public enum Ataque{
@@ -47,6 +48,9 @@ public class Jugador : MonoBehaviour
 
 	private AudioSource audioSource;
 	public AudioClip footstep;
+	public ColoreadorDeCamara coloreadorDeCamara;
+	public MusicController controladorDeMusica;
+	public float tiempoDeAparicionDeEscena = 5f;
 
 	// Use this for initialization
 	void Start ()
@@ -59,6 +63,8 @@ public class Jugador : MonoBehaviour
 		tiempoComboTimerActual = tiempoComboTimerDefault;
 		golpeActual = Ataque.NINGUNO;
 		saludActual = maxSalud;
+		coloreadorDeCamara.aclararEscena(tiempoDeAparicionDeEscena);
+		controladorDeMusica.aumentarVolumenGeneral(tiempoDeAparicionDeEscena);
 	}
 
 	void Update()
@@ -289,6 +295,10 @@ public class Jugador : MonoBehaviour
 	public void Morir()
 	{
 		gameObject.SetActive(false);
+		coloreadorDeCamara.oscurecerEscena(tiempoDeAparicionDeEscena);
+		controladorDeMusica.decrementarVolumenGeneral(tiempoDeAparicionDeEscena);
+		Invoke("respawn", tiempoDeAparicionDeEscena);
+
 	}
 
 	void OnCollisionEnter(Collision col)
@@ -315,14 +325,31 @@ public class Jugador : MonoBehaviour
 		}
 	}
 
+	private void OnTriggerStay(Collider other)
+	{
+		if (other.CompareTag("ItemSalud") && Input.GetKeyDown(KeyCode.J))
+		{
+			animator.SetTrigger("estaBebiendo");
+			saludActual += 5f;
+			FindObjectOfType<UIManager>().updateHealth(saludActual);
+			Destroy(other.gameObject);
+		}
+	}
+
 	public void PlaySound(AudioClip song)
 	{
 		audioSource.clip = song;
-		audioSource.Play();	}
+		audioSource.Play();
+	}
 
 	public void darPisada()
 	{
 		PlaySound(footstep);
+	}
+
+	public void respawn()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 }
