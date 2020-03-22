@@ -112,11 +112,13 @@ public abstract class Jugador : MonoBehaviour
 
 	protected bool EscenaEnIntroduccion()
 	{
-		return ControladorDelJuego.EstadoDeEscena.Equals(EstadoDeEscena.Intro);	}
+		return ControladorDelJuego.EstadoDeEscena.Equals(EstadoDeEscena.Intro);
+	}
 
 	protected bool EscenaEnCombate()
 	{
-		return ControladorDelJuego.EstadoDeEscena.Equals(EstadoDeEscena.Combate);	}
+		return ControladorDelJuego.EstadoDeEscena.Equals(EstadoDeEscena.Combate);
+	}
 
 	void controlarLimitesEnDondeMoverse()
 	{
@@ -370,7 +372,8 @@ public abstract class Jugador : MonoBehaviour
 
 	public void darPisada()
 	{
-		PlaySound(footstep);
+		//PlaySound(footstep);
+		audioSource.PlayOneShot(footstep);
 	}
 
 	public void respawn()
