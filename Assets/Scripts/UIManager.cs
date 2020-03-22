@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[RequireComponent(typeof(Jugador))]
 public class UIManager : MonoBehaviour
 {
 	public Slider healthUI;
@@ -17,12 +18,13 @@ public class UIManager : MonoBehaviour
 	public float enemyUiTime = 4f;
 
 	private float enemyTimer;
-	private Jugador player;
+
+	public Jugador player;
 
     // Start is called before the first frame update
     void Start()
     {
-		player = FindObjectOfType<Jugador>();
+		//player = FindObjectOfType<Jugador>();
 		healthUI.maxValue = player.maxSalud;
 		healthUI.value = healthUI.maxValue;
 		playerName.text = player.nombre;

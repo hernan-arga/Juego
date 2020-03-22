@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System;
 
 public enum Ataque{
 	NINGUNO, GOLPEDERECHO, GOLPEIZQUIERDO, PATADA
@@ -10,7 +11,7 @@ public enum Ataque{
 
 //[ExecuteInEditMode]
 [RequireComponent (typeof(SpriteRenderer))]
-public class Jugador : MonoBehaviour
+public abstract class Jugador : MonoBehaviour
 {
 	public delegate void _levantarItem(Jugador jugador);
 	public static event _levantarItem eventoLevantarItem;
@@ -18,19 +19,20 @@ public class Jugador : MonoBehaviour
 	public static event _tirarItem eventoTirarItem;
 	
 	private SpriteRenderer spriteRenderer;
-	private Animator animator;
+	protected Animator animator;
 	private Rigidbody rigidBody;
 	private bool estaCaminando = false;
 	private bool estaCorriendo = false;
 	private bool tieneItem = false;
 	private GameObject itemTomado = null;
-	private bool tocandoPiso = false;
+	protected bool tocandoPiso = false;
 
 	private bool reinicioDeComboTimer;
 	private float tiempoComboTimerActual;
 	private Ataque golpeActual;
 
 	public float minHeight, maxHeight;
+
 	public float poderDeVelocidad = 2f;
 	public float poderDeSalto = 6.5f;
 	public float tiempoComboTimerDefault = 0.4f;
@@ -51,6 +53,11 @@ public class Jugador : MonoBehaviour
 	public ColoreadorDeCamara coloreadorDeCamara;
 	public MusicController controladorDeMusica;
 	public float tiempoDeAparicionDeEscena = 5f;
+
+	public GameController ControladorDelJuego;
+	[SerializeField]
+	public bool EsJugadorJugable = false;
+	protected bool puedeMoverse = false;
 
 	// Use this for initialization
 	void Start ()
@@ -80,9 +87,9 @@ public class Jugador : MonoBehaviour
 		}
 	}
 
-	void FixedUpdate ()
+	protected virtual void FixedUpdate ()
 	{
-		if (!isDead && !daniado)
+		if (!isDead && !daniado && EstaDisponibleParaJugar())
 		{
 			chequearMoverse();
 			chequearGolpe();
@@ -90,15 +97,34 @@ public class Jugador : MonoBehaviour
 			chequearTirarItem();
 			chequearSaltar();
 			reiniciarComboTimer();
-			controlarOrdenDeCapa();
-			setearAnimaciones();
+
 		}
 
+        setearAnimaciones();
+        controlarOrdenDeCapa();
+		controlarLimitesEnDondeMoverse();
+	}
+
+	protected virtual bool EstaDisponibleParaJugar()
+	{
+		return EsJugadorJugable;
+	}
+
+	protected bool EscenaEnIntroduccion()
+	{
+		return ControladorDelJuego.EstadoDeEscena.Equals(EstadoDeEscena.Intro);	}
+
+	protected bool EscenaEnCombate()
+	{
+		return ControladorDelJuego.EstadoDeEscena.Equals(EstadoDeEscena.Combate);	}
+
+	void controlarLimitesEnDondeMoverse()
+	{
 		//Defino el maximo espacio en el que se puede mover el personaje
-		float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0,0,10)).x;
+		float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10)).x;
 		float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 10)).x;
 		rigidBody.position = new Vector3(Mathf.Clamp(rigidBody.position.x, minWidth + 1, maxWidth - 1),
-			                          rigidBody.position.y, Mathf.Clamp(rigidBody.position.z, minHeight, maxHeight));
+					                          rigidBody.position.y, Mathf.Clamp(rigidBody.position.z, minHeight, maxHeight));
 	}
 
 	void chequearSaltar(){
@@ -215,7 +241,7 @@ public class Jugador : MonoBehaviour
 		transform.localScale = new Vector3(Mathf.Sign(control.x), 1f, 1f);
 	}
 
-	void controlarOrdenDeCapa(){
+	protected void controlarOrdenDeCapa(){
 		/*
 		 * fijo la capa dependiendo de la altura, multiplico por 100 
 		 * para agarrar algunos decimales y el menos es porque cuanto mas abajo mayor 

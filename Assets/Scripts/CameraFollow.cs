@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
+[RequireComponent(typeof(Jugador))]
 public class CameraFollow : MonoBehaviour
 {
 
@@ -10,6 +12,7 @@ public class CameraFollow : MonoBehaviour
 	public Vector2 maxXAndY; // The maximum x and y coordinates the camera can have.
 	public Vector2 minXAndY; // The minimum x and y coordinates the camera can have.
 
+	public Jugador jugadorTarget;
 	private Transform m_Player; // Reference to the player's transform.
 	private bool sacudirCamara = false;
 	private float posicionInicialAntesDeSacudirLaCamara;
@@ -23,7 +26,7 @@ public class CameraFollow : MonoBehaviour
 	private void Awake()
 	{
 		// Setting up the reference.
-		m_Player = GameObject.FindGameObjectWithTag("Player").transform;
+		m_Player = jugadorTarget.transform;
 	}
 
 

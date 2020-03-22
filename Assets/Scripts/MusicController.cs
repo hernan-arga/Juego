@@ -15,6 +15,8 @@ public class MusicController : MonoBehaviour
     {
 		audioSource = GetComponent<AudioSource>();
 		PlaySong(bossSong);
+		//Empiezo el volumen general bajo asi lo aumento de a poco
+		AudioListener.volume = 0.5f;
     }
 
 	public void PlaySong(AudioClip song)
@@ -38,7 +40,8 @@ public class MusicController : MonoBehaviour
 
 	public void aumentarVolumenGeneral(float tiempoQueTardaEnCambiarVolumen)
 	{
-		StartCoroutine(EcualizadorGeneral(tiempoQueTardaEnCambiarVolumen, 1f));	}
+		StartCoroutine(EcualizadorGeneral(tiempoQueTardaEnCambiarVolumen, 1f));
+	}
 
 	//No solo ajusta el volumen de la musica sino de todos los sonidos que haya en el juego
 	private IEnumerator EcualizadorGeneral(float tiempoQueTardaEnCambiarVolumen, float volumenFinal)
@@ -51,5 +54,6 @@ public class MusicController : MonoBehaviour
 			lerpPorcentaje += Time.deltaTime * rateTiempo;
 			AudioListener.volume = Mathf.Lerp(volumenInicial, volumenFinal, lerpPorcentaje);
 			yield return 0;
-		}	}
+		}
+	}
 }
