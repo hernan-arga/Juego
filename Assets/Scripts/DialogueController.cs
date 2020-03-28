@@ -6,19 +6,19 @@ using TMPro;
 public class DialogueController : MonoBehaviour
 {
 	public Dialogue Dialogue;
-	Queue<string> Sentences;
+	Queue<messageDialog> Sentences;
 	IEnumerator CoroutineTypeText;
 	public GameObject DialoguePanel;
 	public TextMeshProUGUI DisplayText;
-	string ActiveSentence;
-	public float TypingSpeed;
+	public TextMeshProUGUI SpeakerName;
+	messageDialog ActiveSentence;
 	AudioSource MyAudio;
-	public AudioClip SpeakSound;
+	public GameController GameController;
 
     // Start is called before the first frame update
     void Start()
     {
-		Sentences = new Queue<string>();
+		Sentences = new Queue<messageDialog>();
 		MyAudio = GetComponent<AudioSource>();
 		StartDialogueSystem();
 
@@ -30,7 +30,7 @@ public class DialogueController : MonoBehaviour
     {
 		Sentences.Clear();
 
-		foreach (string sentence in Dialogue.SentenceList)
+		foreach (messageDialog sentence in Dialogue.SentenceList)
 		{
 			Sentences.Enqueue(sentence);
 		}
@@ -46,36 +46,38 @@ public class DialogueController : MonoBehaviour
 	            StopCoroutine(CoroutineTypeText);
 			}
 
+			GameController.EstadoDeEscena = Dialogue.EstadoDeEscenaAlQueCambiar;
 			DialoguePanel.SetActive(false);            
 			return;
 		}
 
 		ActiveSentence = Sentences.Dequeue();
-		DisplayText.text = ActiveSentence;
 
 		if (CoroutineTypeText != null)
 		{
 			StopCoroutine(CoroutineTypeText);
 		}
+
+		SpeakerName.text = ActiveSentence.speakerName;
 		CoroutineTypeText = TypeTheSentence(ActiveSentence);
 		StartCoroutine(CoroutineTypeText);
 	}
 
-	IEnumerator TypeTheSentence(string sentence)
+	IEnumerator TypeTheSentence(messageDialog activeSentence)
 	{
 		DisplayText.text = "";
 
-		foreach (char letter in sentence)
+		foreach (char letter in activeSentence.message)
 		{
 			DisplayText.text += letter;
-			//MyAudio.PlayOneShot(SpeakSound);
-			yield return new WaitForSeconds(TypingSpeed);
+			MyAudio.PlayOneShot(activeSentence.SpeakSound);
+			yield return new WaitForSeconds(activeSentence.TypingSpeed);
 		}
 	}
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.D) && DisplayText.text.Equals(ActiveSentence))
+		if (Input.GetKeyDown(KeyCode.J) && DisplayText.text.Equals(ActiveSentence.message))
 		{
 			DisplayNextSentence();
 		}
