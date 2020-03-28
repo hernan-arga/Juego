@@ -379,6 +379,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290182988}
   m_CullTransparentMesh: 0
+--- !u!1 &337156797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5082728899243682959, guid: 03e1c915723451f46b397db6407ecb5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5082728899579786802}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &395480420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6298454154233183660, guid: 2e0ad580b973f1a46b49a516f4251a71,
@@ -432,8 +438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMargin: 0
   xSmooth: 8
-  maxXAndY: {x: 0, y: 5.4}
-  minXAndY: {x: 0, y: 5.5}
+  maxXAndY: {x: 0.5, y: 5.4}
+  minXAndY: {x: -0.5, y: 5.5}
   jugadorTarget: {fileID: 1431901012}
   shakeSpeed: 25
   maximumTranslationShake: 0.5
@@ -492,7 +498,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &524576971
 GameObject:
@@ -1496,9 +1502,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1035727489}
-    characterCount: 90
+    characterCount: 94
     spriteCount: 0
-    spaceCount: 11
+    spaceCount: 12
     wordCount: 12
     linkCount: 0
     lineCount: 3
@@ -1937,7 +1943,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1160288096
 GameObject:
@@ -1981,7 +1987,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1223948136
 GameObject:
@@ -2477,7 +2483,7 @@ Transform:
   m_Children:
   - {fileID: 971524133}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1431901012
 MonoBehaviour:
@@ -2508,6 +2514,8 @@ MonoBehaviour:
   tiempoDeAparicionDeEscena: 5
   ControladorDelJuego: {fileID: 1160288097}
   EsJugadorJugable: 1
+  puedeSerDaniado: 1
+  Companiero: {fileID: 1833336384}
 --- !u!136 &1431901013
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2891,7 +2899,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1823878182
 GameObject:
@@ -2929,44 +2937,133 @@ MonoBehaviour:
       message: Diego... estoy muriendo.
       SpeakSound: {fileID: 8300000, guid: 3de94de305f9c3e4f9bc2d3fade9474e, type: 3}
       TypingSpeed: 0.1
+      EventosADisparar:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     - speakerName: Diego
       message: Funciones tonales, intercambio modal, sustitucion tritonal, maqamat.
         Nada de esto sirve para curar una herida tan profunda.
       SpeakSound: {fileID: 8300000, guid: be4c7a5a645e94b4eb62b0a8ec46c6a0, type: 3}
       TypingSpeed: 0.05
+      EventosADisparar:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     - speakerName: Ezequiel
       message: Mi herida no importa tenemos que escapar de este calabozo y recuperar
         el Solem mientras aun podamos.
       SpeakSound: {fileID: 8300000, guid: 3de94de305f9c3e4f9bc2d3fade9474e, type: 3}
       TypingSpeed: 0.08
+      EventosADisparar:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     - speakerName: Diego
       message: 'Me dices que te estas muriendo, pero de todas formas quieres seguir
         peleando? En las condiciones en las que te encuentras solo lograrias que te
         maten en batalla. '
       SpeakSound: {fileID: 8300000, guid: be4c7a5a645e94b4eb62b0a8ec46c6a0, type: 3}
       TypingSpeed: 0.05
+      EventosADisparar:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     - speakerName: Diego
       message: "Ademas, aunque estuvieras bien estamos atrapados en este calabozo
         y no hay forma de salir, las paredes parecen ser inmunes a nuestra magia.\r"
       SpeakSound: {fileID: 8300000, guid: be4c7a5a645e94b4eb62b0a8ec46c6a0, type: 3}
       TypingSpeed: 0.05
+      EventosADisparar:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     - speakerName: Ezequiel
       message: AGGGGGGGGGGGGGGH!
       SpeakSound: {fileID: 8300000, guid: 3de94de305f9c3e4f9bc2d3fade9474e, type: 3}
       TypingSpeed: 0.05
+      EventosADisparar:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     - speakerName: Diego
       message: Resiste amigo, todo va a estar bien. Estoy seguro que los demas lograran
         vencer a Horcas y nos liber...
       SpeakSound: {fileID: 8300000, guid: be4c7a5a645e94b4eb62b0a8ec46c6a0, type: 3}
       TypingSpeed: 0.05
+      EventosADisparar:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 519420030}
+            m_MethodName: setSacudirCamara
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 1431901012}
+            m_MethodName: SetEstaLeyendo
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 337156797}
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     - speakerName: Ezequiel
       message: Que mier...
       SpeakSound: {fileID: 8300000, guid: 3de94de305f9c3e4f9bc2d3fade9474e, type: 3}
       TypingSpeed: 0.05
+      EventosADisparar:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 519420030}
+            m_MethodName: setSacudirCamara
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     - speakerName: Diego
       message: OH NO! Esto solo puede significar que el libro ha sido utilizado.
       SpeakSound: {fileID: 8300000, guid: be4c7a5a645e94b4eb62b0a8ec46c6a0, type: 3}
       TypingSpeed: 0.05
+      EventosADisparar:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     EstadoDeEscenaAlQueCambiar: 1
   DialoguePanel: {fileID: 1585895466}
   DisplayText: {fileID: 1035727489}
@@ -2984,7 +3081,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1823878185
 AudioSource:
@@ -3132,6 +3229,7 @@ MonoBehaviour:
   tiempoDeAparicionDeEscena: 5
   ControladorDelJuego: {fileID: 1160288097}
   EsJugadorJugable: 0
+  puedeSerDaniado: 0
 --- !u!95 &1833336385
 Animator:
   serializedVersion: 3
@@ -3213,7 +3311,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1833336388
 Rigidbody:
@@ -3336,7 +3434,7 @@ Transform:
   m_LocalScale: {x: 8, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1835590090
 GameObject:
@@ -3454,7 +3552,7 @@ Transform:
   - {fileID: 2013022394}
   - {fileID: 395480420}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &1855753527
 EdgeCollider2D:
@@ -3880,7 +3978,7 @@ RectTransform:
   - {fileID: 1585895467}
   - {fileID: 1860630031}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4316,6 +4414,85 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 22.857143, y: 7.5}
   m_EdgeRadius: 0
+--- !u!1001 &5082728899579786802
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5082728899243682959, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_Name
+      value: Boss1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243682959, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243683057, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243683057, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.883044
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243683057, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243683057, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243683057, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243683057, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243683057, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243683057, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243683057, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243683057, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243683057, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082728899243683058, guid: 03e1c915723451f46b397db6407ecb5f,
+        type: 3}
+      propertyPath: ControladorDelJuego
+      value: 
+      objectReference: {fileID: 1160288097}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03e1c915723451f46b397db6407ecb5f, type: 3}
 --- !u!1001 &6298454155086006988
 PrefabInstance:
   m_ObjectHideFlags: 0

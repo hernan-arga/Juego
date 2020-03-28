@@ -56,11 +56,11 @@ public abstract class Jugador : MonoBehaviour
 
 	public GameController ControladorDelJuego;
 	[SerializeField]
-	public bool EsJugadorJugable = false;
+	public bool EsJugadorJugable, puedeSerDaniado;
 	protected bool puedeMoverse = false;
 
 	// Use this for initialization
-	void Start ()
+	protected virtual void Start ()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		//gameObject == Self
@@ -119,6 +119,10 @@ public abstract class Jugador : MonoBehaviour
 	{
 		return ControladorDelJuego.EstadoDeEscena.Equals(EstadoDeEscena.Combate);
 	}
+
+	protected bool EscenaEnJefeDerrotado()
+	{
+		return ControladorDelJuego.EstadoDeEscena.Equals(EstadoDeEscena.JefeDerrotado);	}
 
 	void controlarLimitesEnDondeMoverse()
 	{
@@ -290,10 +294,11 @@ public abstract class Jugador : MonoBehaviour
 
 	public void recibirDanio(float danio, bool golpeadoPorIzq)
 	{
-		if (!isDead)
+		if (!isDead && puedeSerDaniado)
 		{
 			daniado = true;
 			saludActual -= danio;
+
 			if (saludActual <= 0f)
 			{
 				if (golpeadoPorIzq)

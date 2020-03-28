@@ -19,6 +19,8 @@ abstract public class Enemigo : MonoBehaviour
 	protected AudioSource audioSource;
 	public AudioClip footstep;
 
+	public GameController ControladorDelJuego;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -106,5 +108,14 @@ abstract public class Enemigo : MonoBehaviour
 
 	public void darPisada()
 	{
-		PlaySound(footstep);	}
+		PlaySound(footstep);
+	}
+
+	protected bool EscenaEnCombate()
+	{
+		return ControladorDelJuego.EstadoDeEscena.Equals(EstadoDeEscena.Combate);	}
+
+	protected bool EscenaEnIntroduccion()
+	{
+		return ControladorDelJuego.EstadoDeEscena.Equals(EstadoDeEscena.Intro);	}
 }

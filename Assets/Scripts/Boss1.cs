@@ -10,59 +10,128 @@ public enum AtaqueDeBoss1
 
 public class Boss1 : Enemigo
 {
-	private AtaqueDeBoss1 golpeActual = AtaqueDeBoss1.NINGUNO;
+	AtaqueDeBoss1 golpeActual = AtaqueDeBoss1.NINGUNO;
 	public GameObject llamaradas;
-	private GameObject fuegoInvocado;
-	private bool vuelo = false, estaDelLadoDerechoDeLaPantalla = true, estaAterrizando = false;
+	GameObject fuegoInvocado;
+	bool vuelo, estaDelLadoDerechoDeLaPantalla = true, estaAterrizando, puedeAtacar, pathFijado,
+		 alcanzoPosicionDeCombate;
 	public RockSpawn tiradorDeRocas;
-	public float velocidad = 0.1f;
+	public float velocidad = 0.1f, velocidadAlCorrer = 3f;
 
-	private GameObject[] nodos;
-	private Vector3 posicionNodoActualASeguir, posicionUltimoNodo;
-	private float rateVelocidad = 0f, porcentajeLerp = 0f;
-	private int nodoActual = 0;
-	private GameObject pathFlying;
+	GameObject[] nodos;
+	Vector3 posicionNodoActualASeguir, posicionUltimoNodo;
+	float rateVelocidad = 0f, porcentajeLerp = 0f;
+	int nodoActual = 0;
+	GameObject pathFlying;
 
-    // Start is called before the first frame update
+	public Vector3 posicionInicialParaCombatir;
+
+	// Start is called before the first frame update
 	protected override void Start()
-    {
+	{
 		base.Start();
 		tiempoActualDeAtaque = 0f;
 		nodos = GameObject.FindGameObjectsWithTag("Node");
 		pathFlying = GameObject.FindGameObjectWithTag("Path Flying");
-
-		if (pathFlying != null)
-		{
-			pathFlying.transform.parent = null;
-		}
-
-        reiniciarPathVuelo();
+		FijarPosicionInicialDeCombate();
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
+	// Update is called once per frame
+	void Update()
+	{
 		if (!isDead)
 		{
 			controlarOrdenDeCapa();
-			atacarJugador();
 
-			if (vuelo)
+			if (!alcanzoPosicionDeCombate)
 			{
-				controlarVuelo();
+				controlarMoverseHastaLaCamara();
+			}
+
+			if (EscenaEnCombate())
+			{
+				controlarPath();
+				atacarJugador();
+
+				if (vuelo)
+				{
+					controlarVuelo();
+				}
 			}
 
 		}
-    }
+	}
+
+	void controlarPath()
+	{
+		if (!pathFijado)
+		{
+			FijarPath();
+			pathFijado = true;
+		}
+	}
+
+	void controlarMoverseHastaLaCamara()
+	{
+		if (!LlegoALaPosicionInicialDeCombate())
+		{
+			MoverseHastaEnFrenteDeLaCamara();
+		}
+
+		else
+		{
+			alcanzoPosicionDeCombate = true;
+			animator.SetBool("estaCorriendo", false);
+		}
+
+	}
+
+	void FijarPath()
+	{
+		if (pathFlying != null)
+		{
+			pathFlying.transform.parent = null;
+
+		}
+		reiniciarPathVuelo();
+	}
+
+	void FijarPosicionInicialDeCombate()
+	{
+		Camera camara = FindObjectOfType<Camera>();
+		float cincoSextosDeLaCamara = camara.pixelWidth - camara.pixelWidth / 6f;
+		float posicionEnXInicial = Camera.main.ScreenToWorldPoint(new Vector3(cincoSextosDeLaCamara, 0, 0)).x;
+		posicionInicialParaCombatir = new Vector3(posicionEnXInicial,
+										  transform.position.y,
+										  transform.position.z);
+	}
+
+	bool LlegoALaPosicionInicialDeCombate()
+	{
+		return (transform.position - posicionInicialParaCombatir).sqrMagnitude < 1f;
+	}
+
+	void MoverseHastaEnFrenteDeLaCamara()
+	{
+		transform.position = Vector3.MoveTowards(transform.position, posicionInicialParaCombatir, velocidadAlCorrer * Time.deltaTime);
+		animator.SetBool("estaCorriendo", true);
+	}
+
+	public void SetPuedeAtacar(bool valor)
+	{
+		puedeAtacar = valor;
+	}
 
 	void controlarOrdenDeCapa()
 	{
 		//Para que el jugador no parezca que lo esta pisando
-		spriteRenderer.sortingOrder = -(int)(transform.position.z * 90);	}
+		spriteRenderer.sortingOrder = -(int)(transform.position.z * 90);
+	}
 
 	void OnCollisionEnter(Collision col)
 	{
-		if(col.collider.CompareTag("Piso") && estaAterrizando){
+		if (col.collider.CompareTag("Piso") && estaAterrizando)
+		{
 			animator.SetTrigger("tocoPiso");
 			estaAterrizando = false;
 			tirarPiedras();
@@ -82,15 +151,14 @@ public class Boss1 : Enemigo
 			{
 				//rotacionLlamarada = Quaternion.Euler(0f, -120f, 0f);
 				startRot = Quaternion.Euler(0f, -120f, 0f);
-				fuegoInvocado = Instantiate(llamaradas, transform.position + 2f * Vector3.left + 0.2f * Vector3.down, 
-				                            startRot);
+				fuegoInvocado = Instantiate(llamaradas, transform.position + 2f * Vector3.left + 0.2f * Vector3.down,
+											startRot);
 			}
 			else
 			{
-				//Fixme: no se esta instanciando con esos 180 en x
 				startRot = Quaternion.Euler(0f, 120f, 0f);
-				fuegoInvocado = Instantiate(llamaradas, transform.position - 2f * Vector3.left + 0.2f * Vector3.down, 
-				                            startRot);
+				fuegoInvocado = Instantiate(llamaradas, transform.position - 2f * Vector3.left + 0.2f * Vector3.down,
+											startRot);
 			}
 
 		}
@@ -121,16 +189,14 @@ public class Boss1 : Enemigo
 				rigidBody.isKinematic = true;
 				golpeActual = AtaqueDeBoss1.NINGUNO;
 				break;
-			/*case (Ataque.PATADA):
-				animator.SetTrigger("patada");
-				golpeActual = Ataque.NINGUNO;
-				break;*/
-			default:
-				break;
+				/*case (Ataque.PATADA):
+					animator.SetTrigger("patada");
+					golpeActual = Ataque.NINGUNO;
+					break;*/
 		}
 	}
 
-	private void controlarGiro()
+	void controlarGiro()
 	{
 		Vector3 startRot = transform.rotation.eulerAngles;
 
@@ -153,17 +219,17 @@ public class Boss1 : Enemigo
 		}
 	}
 
-	private bool vaHaciaElUltimoNodo()
+	bool vaHaciaElUltimoNodo()
 	{
 		return nodoActual.Equals(nodos.Length - 1) && estaDelLadoDerechoDeLaPantalla;
 	}
 
-	private bool vaHaciaElPrimerNodo()
+	bool vaHaciaElPrimerNodo()
 	{
 		return nodoActual.Equals(0) && !estaDelLadoDerechoDeLaPantalla;
 	}
 
-	private void controlarVuelo()
+	void controlarVuelo()
 	{
 		//como tarda 1 segundo en girar 50%, voy sumando el porcentaje que gira en cada frame
 		//Ej si tardo 0,02 segundos en actualizar el frame, entonces se desplazo 0,02*50% = 1% de la distancia durante ese framel
@@ -172,7 +238,7 @@ public class Boss1 : Enemigo
 		if (porcentajeLerp < 1f)
 		{
 			transform.position = Vector3.Lerp(posicionUltimoNodo, posicionNodoActualASeguir, porcentajeLerp);
-            controlarGiro();
+			controlarGiro();
 		}
 
 		else
@@ -181,7 +247,7 @@ public class Boss1 : Enemigo
 		}
 	}
 
-	private void avanzarAlSiguienteNodo()
+	void avanzarAlSiguienteNodo()
 	{
 		if (estaDelLadoDerechoDeLaPantalla)
 		{
@@ -195,22 +261,22 @@ public class Boss1 : Enemigo
 
 	}
 
-	private void avanzarAlNodoPorDerecha()
+	void avanzarAlNodoPorDerecha()
 	{
-		if (nodoActual < nodos.Length-1)
+		if (nodoActual < nodos.Length - 1)
 		{
 			nodoActual++;
 			controlarNodos();
 		}
 
-		else 
+		else
 		{
 			aterrizar();
-			estaDelLadoDerechoDeLaPantalla = false;;
+			estaDelLadoDerechoDeLaPantalla = false; ;
 		}
 	}
 
-	private void avanzarAlNodoPorIzquierda()
+	void avanzarAlNodoPorIzquierda()
 	{
 		if (nodoActual > 0)
 		{
@@ -225,12 +291,12 @@ public class Boss1 : Enemigo
 		}
 	}
 
-	/*private void voltearSprite()
+	/* void voltearSprite()
 	{
 		transform.localScale = new Vector3(transform.localScale.x * -1f, 1f, 1f);
 	}*/
 
-	private void aterrizar()
+	void aterrizar()
 	{
 		porcentajeLerp = 0f;
 		rigidBody.isKinematic = false;
@@ -239,14 +305,14 @@ public class Boss1 : Enemigo
 		animator.SetBool("volando", false);
 	}
 
-	private void reiniciarPathVuelo()
+	void reiniciarPathVuelo()
 	{
 		posicionUltimoNodo = transform.position;
 		posicionNodoActualASeguir = transform.position;
-        controlarNodos();
+		controlarNodos();
 	}
 
-	private void controlarNodos()
+	void controlarNodos()
 	{
 		posicionUltimoNodo = posicionNodoActualASeguir;
 		posicionNodoActualASeguir = nodos[nodoActual].transform.position;
@@ -259,12 +325,13 @@ public class Boss1 : Enemigo
 
 	public override void Morir()
 	{
+		ControladorDelJuego.EstadoDeEscena = EstadoDeEscena.JefeDerrotado;
 		base.Morir();
-		Invoke("LoadScene", 8f);
+		//Invoke("LoadScene", 8f);
 	}
 
-	private void LoadScene()
+	/*void LoadScene()
 	{
-		//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-	}
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	}*/
 }

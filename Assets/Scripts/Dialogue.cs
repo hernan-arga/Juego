@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.Events;
 
 [System.Serializable]
 public struct messageDialog
@@ -10,6 +10,7 @@ public struct messageDialog
 	public string message;
 	public AudioClip SpeakSound;
 	public float TypingSpeed;
+	public UnityEvent EventosADisparar;
 }
 
 [System.Serializable]

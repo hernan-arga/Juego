@@ -19,10 +19,7 @@ public class GameController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (Input.GetKeyDown(KeyCode.F))
-		{
-			EstadoDeEscena = EstadoDeEscena.Combate;
-		}
+		
 	}
 
 }

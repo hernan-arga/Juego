@@ -14,20 +14,22 @@ public class DialogueController : MonoBehaviour
 	messageDialog ActiveSentence;
 	AudioSource MyAudio;
 	public GameController GameController;
+	bool typingText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+	// Start is called before the first frame update
+	void Start()
+	{
+		typingText = false;
 		Sentences = new Queue<messageDialog>();
 		MyAudio = GetComponent<AudioSource>();
 		StartDialogueSystem();
 
 		DialoguePanel.SetActive(true);
-        DisplayNextSentence();
-    }
+		DisplayNextSentence();
+	}
 
 	void StartDialogueSystem()
-    {
+	{
 		Sentences.Clear();
 
 		foreach (messageDialog sentence in Dialogue.SentenceList)
@@ -41,23 +43,16 @@ public class DialogueController : MonoBehaviour
 	{
 		if (Sentences.Count <= 0)
 		{
-			if (CoroutineTypeText != null)
-			{
-	            StopCoroutine(CoroutineTypeText);
-			}
-
+			StopTypingText();
 			GameController.EstadoDeEscena = Dialogue.EstadoDeEscenaAlQueCambiar;
-			DialoguePanel.SetActive(false);            
+			DialoguePanel.SetActive(false);
+			Destroy(gameObject);
 			return;
 		}
 
 		ActiveSentence = Sentences.Dequeue();
 
-		if (CoroutineTypeText != null)
-		{
-			StopCoroutine(CoroutineTypeText);
-		}
-
+        StopTypingText();
 		SpeakerName.text = ActiveSentence.speakerName;
 		CoroutineTypeText = TypeTheSentence(ActiveSentence);
 		StartCoroutine(CoroutineTypeText);
@@ -72,14 +67,47 @@ public class DialogueController : MonoBehaviour
 			DisplayText.text += letter;
 			MyAudio.PlayOneShot(activeSentence.SpeakSound);
 			yield return new WaitForSeconds(activeSentence.TypingSpeed);
+			typingText = true;
+		}
+
+		activeSentence.EventosADisparar.Invoke();
+
+		typingText = false;
+	}
+
+	void FinishActiveSentence()
+	{
+        StopCoroutine(CoroutineTypeText);
+		DisplayText.text = ActiveSentence.message;
+		ActiveSentence.EventosADisparar.Invoke();
+		typingText = false;
+	}
+
+	void StopTypingText()
+	{
+		if (CoroutineTypeText != null)
+		{
+        	StopCoroutine(CoroutineTypeText);
 		}
 	}
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.J) && DisplayText.text.Equals(ActiveSentence.message))
+		if (Input.GetKeyDown(KeyCode.J))
 		{
-			DisplayNextSentence();
+			if (typingText)
+			{
+				FinishActiveSentence();
+			}
+
+			else
+			{
+                DisplayNextSentence();
+			}
+
 		}
+
 	}
+
+
 }
