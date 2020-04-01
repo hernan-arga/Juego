@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ColoreadorDeCamara : MonoBehaviour
 {
-	private Image fondo;
+	Image fondo;
 
 	void Awake()
 	{
@@ -21,14 +21,15 @@ public class ColoreadorDeCamara : MonoBehaviour
 
 	public void aclararEscena(float tiempoDeColoreado)
 	{
-		StartCoroutine(Opacador(tiempoDeColoreado, 0f));	}
+		StartCoroutine(Opacador(tiempoDeColoreado, 0f));
+	}
 
 	public void oscurecerEscena(float tiempoDeColoreado)
 	{
 		StartCoroutine(Opacador(tiempoDeColoreado, 1f));
 	}
 
-	private IEnumerator Opacador(float tiempoDeColoreado, float alphaFinal)
+	IEnumerator Opacador(float tiempoDeColoreado, float alphaFinal)
 	{
 		Color colorActual = fondo.color;
 		float alphaInicial = colorActual.a;

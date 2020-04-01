@@ -50,9 +50,7 @@ public abstract class Jugador : MonoBehaviour
 
 	private AudioSource audioSource;
 	public AudioClip footstep;
-	public ColoreadorDeCamara coloreadorDeCamara;
-	public MusicController controladorDeMusica;
-	public float tiempoDeAparicionDeEscena = 5f;
+
 
 	public GameController ControladorDelJuego;
 	[SerializeField]
@@ -70,8 +68,6 @@ public abstract class Jugador : MonoBehaviour
 		tiempoComboTimerActual = tiempoComboTimerDefault;
 		golpeActual = Ataque.NINGUNO;
 		saludActual = maxSalud;
-		coloreadorDeCamara.aclararEscena(tiempoDeAparicionDeEscena);
-		controladorDeMusica.aumentarVolumenGeneral(tiempoDeAparicionDeEscena);
 	}
 
 	void Update()
@@ -122,7 +118,8 @@ public abstract class Jugador : MonoBehaviour
 
 	protected bool EscenaEnJefeDerrotado()
 	{
-		return ControladorDelJuego.EstadoDeEscena.Equals(EstadoDeEscena.JefeDerrotado);	}
+		return ControladorDelJuego.EstadoDeEscena.Equals(EstadoDeEscena.JefeDerrotado);
+	}
 
 	void controlarLimitesEnDondeMoverse()
 	{
@@ -328,9 +325,8 @@ public abstract class Jugador : MonoBehaviour
 	public void Morir()
 	{
 		gameObject.SetActive(false);
-		coloreadorDeCamara.oscurecerEscena(tiempoDeAparicionDeEscena);
-		controladorDeMusica.decrementarVolumenGeneral(tiempoDeAparicionDeEscena);
-		Invoke("respawn", tiempoDeAparicionDeEscena);
+		ControladorDelJuego.DesvanecerEscena();
+		Invoke("respawn", ControladorDelJuego.tiempoDeAparicionDeEscena);
 
 	}
 

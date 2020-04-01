@@ -6,6 +6,7 @@ public class Diego : Jugador
 {
 	public Jugador Companiero;
 	Vector3 posicionDetrasDeCompañero;
+	public GameObject objetoDialogoFinalPrimerEscena;
 
 	protected override void Start()
 	{
@@ -32,15 +33,22 @@ public class Diego : Jugador
 			{
 				if (!LlegoADondeEstaElTarget(posicionDetrasDeCompañero))
 				{
-                 	CorrerHaciaTarget(posicionDetrasDeCompañero);
+					CorrerHaciaTarget(posicionDetrasDeCompañero);
+				}
+				else
+				{
+					animator.SetTrigger("Llorando");
+					objetoDialogoFinalPrimerEscena.SetActive(true);
 				}
 			}
 		}
     }
 
+
 	bool LlegoADondeEstaElTarget(Vector3 target)
 	{
-		return (transform.position - target).sqrMagnitude < 1f;	}
+		return (transform.position - target).sqrMagnitude < 1f;
+	}
 
 	void CorrerHaciaTarget(Vector3 target)
 	{
