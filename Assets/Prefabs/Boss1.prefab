@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5082728899243682956}
   m_Layer: 11
   m_Name: Boss1
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +129,8 @@ MonoBehaviour:
     type: 3}
   velocidad: 8
   velocidadAlCorrer: 3
+  estaDelLadoDerechoDeLaPantalla: 1
+  pathFlying: {fileID: 0}
   posicionInicialParaCombatir: {x: 0, y: 0, z: 0}
 --- !u!54 &5082728899243682957
 Rigidbody:

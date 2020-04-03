@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AtaqueDePiedra : Attack
 {
-	private Animator animator;
-	private AudioSource audioSource;
+	Animator animator;
+	AudioSource audioSource;
 	public AudioClip collision;
 
     // Start is called before the first frame update
@@ -21,10 +19,9 @@ public class AtaqueDePiedra : Attack
         
     }
 
-	protected override void OnCollisionEnter(Collision col)
+	protected void OnCollisionEnter(Collision col)
 	{
-		//base es lo mismo que super en java, o sea llamo a OnCollisionEnter de la clase attack
-		base.OnCollisionEnter(col);
+		OnTriggerEnter(col.collider);
 		PlaySound(collision);
 		animator.SetTrigger("colision");
 	}
@@ -37,5 +34,6 @@ public class AtaqueDePiedra : Attack
 	public void PlaySound(AudioClip song)
 	{
 		audioSource.clip = song;
-		audioSource.Play();	}
+		audioSource.Play();
+	}
 }

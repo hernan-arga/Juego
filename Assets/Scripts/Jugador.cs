@@ -93,12 +93,20 @@ public abstract class Jugador : MonoBehaviour
 			chequearTirarItem();
 			chequearSaltar();
 			reiniciarComboTimer();
-
+			chequearPower();
 		}
 
         setearAnimaciones();
         controlarOrdenDeCapa();
 		controlarLimitesEnDondeMoverse();
+	}
+
+	protected virtual void chequearPower()
+	{
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			animator.SetTrigger("Power");
+		}
 	}
 
 	protected virtual bool EstaDisponibleParaJugar()
@@ -127,7 +135,8 @@ public abstract class Jugador : MonoBehaviour
 		float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10)).x;
 		float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 10)).x;
 		rigidBody.position = new Vector3(Mathf.Clamp(rigidBody.position.x, minWidth + 1, maxWidth - 1),
-					                          rigidBody.position.y, Mathf.Clamp(rigidBody.position.z, minHeight, maxHeight));
+					                     rigidBody.position.y, 
+		                                 Mathf.Clamp(rigidBody.position.z, minHeight, maxHeight));
 	}
 
 	void chequearSaltar(){
@@ -382,4 +391,8 @@ public abstract class Jugador : MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
+	public bool EstaMirandoALaDerecha()
+	{
+		return Mathf.Sign(control.x) >= 0f;
+	}
 }

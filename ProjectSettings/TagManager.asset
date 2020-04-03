@@ -9,6 +9,7 @@ TagManager:
   - Path Flying
   - Node
   - ItemSalud
+  - Enemigo
   layers:
   - Default
   - TransparentFX

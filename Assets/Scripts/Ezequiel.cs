@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,5 +23,7 @@ public class Ezequiel : Jugador
 
 	protected override bool EstaDisponibleParaJugar()
 	{
-		return base.EstaDisponibleParaJugar() && puedeMoverse;	}
+		return base.EstaDisponibleParaJugar() && puedeMoverse;
+	}
+
 }

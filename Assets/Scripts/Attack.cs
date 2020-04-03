@@ -18,11 +18,10 @@ public class Attack : MonoBehaviour
 
 	}
 
-	//virtual: The virtual keyword is used to modify a method and allow for it to be overridden in a derived class.
-	protected virtual void OnCollisionEnter(Collision col)
+	protected void OnTriggerEnter(Collider col)
 	{
-		Enemigo enemigo = col.collider.GetComponent<Enemigo>();
-		Jugador jugador = col.collider.GetComponent<Jugador>();
+		Enemigo enemigo = col.GetComponent<Enemigo>();
+		Jugador jugador = col.GetComponent<Jugador>();
 		bool golpeoPorIzq = (transform.position.x - col.transform.position.x) < 0;
 
 		if (enemigo != null)

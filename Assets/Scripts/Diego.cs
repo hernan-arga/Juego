@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class Diego : Jugador
 	public Jugador Companiero;
 	Vector3 posicionDetrasDeCompañero;
 	public GameObject objetoDialogoFinalPrimerEscena;
+	public GameObject Poder;
 
 	protected override void Start()
 	{
@@ -69,5 +71,20 @@ public class Diego : Jugador
 	public void SetEstaLeyendo(bool valor)
 	{
 		animator.SetBool("Leyendo", valor);
+	}
+
+	void ActivarPoder()
+	{
+		Vector3 posicionAInstanciarPoder;
+		/*if (EstaMirandoALaDerecha())
+		{
+			posicionAInstanciarPoder = new Vector3(0.55f, 0.9f, 0f);
+		}
+		else { 
+			posicionAInstanciarPoder = new Vector3(-0.7f, 0.9f, 0f);
+		}*/posicionAInstanciarPoder = new Vector3(0.55f, 0.9f, 0f);
+		//posicionAInstanciarPoder += transform.position;
+		Instantiate(Poder, transform);
+		Poder.transform.position = posicionAInstanciarPoder;
 	}
 }
