@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 	public Slider healthUI;
 	public Image playerImage;
 	public TextMeshProUGUI playerName;
+	public Image powerIcon;
 
 	public GameObject enemyUi;
 	public Slider enemySlider;
@@ -17,7 +18,7 @@ public class UIManager : MonoBehaviour
 	public Image enemyImage;
 	public float enemyUiTime = 4f;
 
-	private float enemyTimer;
+	float enemyTimer;
 
 	public Jugador player;
 
@@ -56,5 +57,14 @@ public class UIManager : MonoBehaviour
 		enemyTimer = 0;
 		enemyUi.SetActive(true);
 	}
+
+	public void activatePowerIcon()
+	{
+		powerIcon.enabled = true;
+	}
+
+	public void desactivatePowerIcon()
+	{
+		powerIcon.enabled = false;	}
 
 }

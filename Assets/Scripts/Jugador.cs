@@ -55,11 +55,14 @@ public abstract class Jugador : MonoBehaviour
 	public GameController ControladorDelJuego;
 	[SerializeField]
 	public bool EsJugadorJugable, puedeSerDaniado;
-	protected bool puedeMoverse = false;
+	protected bool puedeMoverse;
+	protected PowerPlayerCode CodigoDePoder;
+	bool puedeActivarPoder;
 
 	// Use this for initialization
 	protected virtual void Start ()
 	{
+		CodigoDePoder = GetComponent<PowerPlayerCode>();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		//gameObject == Self
 		animator = gameObject.GetComponentInParent<Animator> ();
@@ -68,6 +71,7 @@ public abstract class Jugador : MonoBehaviour
 		tiempoComboTimerActual = tiempoComboTimerDefault;
 		golpeActual = Ataque.NINGUNO;
 		saludActual = maxSalud;
+		puedeActivarPoder = true;
 	}
 
 	void Update()
@@ -87,13 +91,24 @@ public abstract class Jugador : MonoBehaviour
 	{
 		if (!isDead && !daniado && EstaDisponibleParaJugar())
 		{
-			chequearMoverse();
-			chequearGolpe();
-			chequearLevantarItem();
-			chequearTirarItem();
-			chequearSaltar();
-			reiniciarComboTimer();
-			chequearPower();
+			if (puedeActivarPoder && CodigoDePoder.CodigoActivado)
+			{
+				if (!CodigoDePoder.EstaActivadoElPoder)
+				{
+					TriggerearPoder();
+				}
+			}
+
+			else
+			{
+				chequearMoverse();
+				chequearGolpe();
+				chequearLevantarItem();
+				chequearTirarItem();
+				chequearSaltar();
+				reiniciarComboTimer();
+			}
+
 		}
 
         setearAnimaciones();
@@ -101,12 +116,20 @@ public abstract class Jugador : MonoBehaviour
 		controlarLimitesEnDondeMoverse();
 	}
 
-	protected virtual void chequearPower()
+	protected void DesactivarPoder()
 	{
-		if (Input.GetKeyDown(KeyCode.P))
-		{
-			animator.SetTrigger("Power");
-		}
+		CodigoDePoder.DesactivarPoder();
+		CodigoDePoder.FinalizarCodigo();
+	}
+
+	protected abstract void ActivarPoder();
+
+	protected virtual void TriggerearPoder()
+	{
+		puedeActivarPoder = false;
+		CodigoDePoder.ActivarPoder();
+		animator.SetTrigger("Power");
+		FindObjectOfType<UIManager>().desactivatePowerIcon();
 	}
 
 	protected virtual bool EstaDisponibleParaJugar()

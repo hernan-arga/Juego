@@ -4872,7 +4872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6959b02880e6d49a3a727f64e7a6db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  danio: 0
+  danio: 3
   target: {fileID: 0}
   poderDeVelocidad: 20
   DistanciaMaximaParaSeguirATarget: 8

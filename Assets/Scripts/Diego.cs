@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Diego : Jugador
 {
@@ -15,6 +12,7 @@ public class Diego : Jugador
 		base.Start();
 		SetEstaLeyendo(true);
 		posicionDetrasDeCompañero = Companiero.transform.position + new Vector3(0f, 0f, 2f);
+		CodigoDePoder.enabled = false;
 	}
 
     // Update is called once per frame
@@ -25,6 +23,7 @@ public class Diego : Jugador
 		if (EscenaEnCombate())
 		{
 			puedeMoverse = true;
+			CodigoDePoder.enabled = true;
 		}
 
 		else
@@ -73,7 +72,7 @@ public class Diego : Jugador
 		animator.SetBool("Leyendo", valor);
 	}
 
-	void ActivarPoder()
+	protected override void ActivarPoder()
 	{
 		Vector3 posicionAInstanciarPoder;
 		/*if (EstaMirandoALaDerecha())

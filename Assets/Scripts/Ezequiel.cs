@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class Ezequiel : Jugador
 {
@@ -26,4 +23,9 @@ public class Ezequiel : Jugador
 		return base.EstaDisponibleParaJugar() && puedeMoverse;
 	}
 
+	protected override void ActivarPoder()
+	{
+		//Implementar el poder aca
+		throw new NotImplementedException();
+	}
 }
