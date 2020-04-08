@@ -1533,8 +1533,8 @@ MonoBehaviour:
   m_text: Funciones tonales, intercambio modal, sustitucion tritonal, maqamat. Nada
     de esto sirve para curar una herida tan profunda.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 39ceee635ef7b1b47b7b93b5900b7b15, type: 2}
-  m_sharedMaterial: {fileID: 3600661773007146112, guid: 39ceee635ef7b1b47b7b93b5900b7b15,
+  m_fontAsset: {fileID: 11400000, guid: 6705ceda8ff68e745aa8909aa5cacc02, type: 2}
+  m_sharedMaterial: {fileID: 649840665948170007, guid: 6705ceda8ff68e745aa8909aa5cacc02,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1566,21 +1566,21 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_textAlignment: 257
-  m_characterSpacing: 0
+  m_characterSpacing: -5
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -25
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 1
-  m_firstOverflowCharacterIndex: -1
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: 74
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
-  m_isTextTruncated: 1
+  m_isTextTruncated: 0
   m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
@@ -1601,12 +1601,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1035727489}
-    characterCount: 94
+    characterCount: 123
     spriteCount: 0
-    spaceCount: 12
-    wordCount: 12
+    spaceCount: 16
+    wordCount: 17
     linkCount: 0
-    lineCount: 3
+    lineCount: 4
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -2830,7 +2830,7 @@ MonoBehaviour:
   Dialogue:
     SentenceList:
     - speakerName: Diego
-      message: Ezequiel!!!
+      message: "\xA1\xA1\xA1Ezequiel!!!"
       SpeakSound: {fileID: 8300000, guid: be4c7a5a645e94b4eb62b0a8ec46c6a0, type: 3}
       TypingSpeed: 0.05
       EventosADisparar:
@@ -3255,9 +3255,9 @@ MonoBehaviour:
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
     - speakerName: Diego
-      message: 'Me dices que te estas muriendo, pero de todas formas quieres seguir
+      message: "\xBFMe dices que te estas muriendo, pero de todas formas quieres seguir
         peleando? En las condiciones en las que te encuentras solo lograrias que te
-        maten en batalla. '
+        maten en batalla. "
       SpeakSound: {fileID: 8300000, guid: be4c7a5a645e94b4eb62b0a8ec46c6a0, type: 3}
       TypingSpeed: 0.05
       EventosADisparar:
@@ -3276,7 +3276,7 @@ MonoBehaviour:
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
     - speakerName: Ezequiel
-      message: AGGGGGGGGGGGGGGH!
+      message: "\xA1AGGGGGGGGGGGGGGH!"
       SpeakSound: {fileID: 8300000, guid: 3de94de305f9c3e4f9bc2d3fade9474e, type: 3}
       TypingSpeed: 0.05
       EventosADisparar:
@@ -3328,7 +3328,7 @@ MonoBehaviour:
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
     - speakerName: Ezequiel
-      message: Que mier...
+      message: "\xA1Que mier..."
       SpeakSound: {fileID: 8300000, guid: 3de94de305f9c3e4f9bc2d3fade9474e, type: 3}
       TypingSpeed: 0.05
       EventosADisparar:
@@ -3348,7 +3348,7 @@ MonoBehaviour:
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
     - speakerName: Diego
-      message: OH NO! Esto solo puede significar que el libro ha sido utilizado.
+      message: "\xA1OH NO! Esto solo puede significar que el libro ha sido utilizado."
       SpeakSound: {fileID: 8300000, guid: be4c7a5a645e94b4eb62b0a8ec46c6a0, type: 3}
       TypingSpeed: 0.05
       EventosADisparar:
@@ -4429,7 +4429,7 @@ GameObject:
   - component: {fileID: 2085726181}
   - component: {fileID: 2085726180}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [LiberationSans SDF Material]
+  m_Name: TMP SubMeshUI [Fipps-Regular Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
