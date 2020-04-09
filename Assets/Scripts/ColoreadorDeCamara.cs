@@ -1,11 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ColoreadorDeCamara : MonoBehaviour
 {
 	Image fondo;
+	public TextMeshProUGUI tituloDeEscena;
 
 	void Awake()
 	{
@@ -29,6 +30,11 @@ public class ColoreadorDeCamara : MonoBehaviour
 		StartCoroutine(Opacador(tiempoDeColoreado, 1f));
 	}
 
+	public void desvanecerTituloDeEscena(float tiempoDeDesaparicion)
+	{
+		StartCoroutine(OpacadorDeTitulo(tiempoDeDesaparicion, 0f));
+	}
+
 	IEnumerator Opacador(float tiempoDeColoreado, float alphaFinal)
 	{
 		Color colorActual = fondo.color;
@@ -43,4 +49,18 @@ public class ColoreadorDeCamara : MonoBehaviour
 			yield return 0;
 		}
 	}
+
+	IEnumerator OpacadorDeTitulo(float tiempoDeColoreado, float alphaFinal)
+	{
+		Color colorActual = tituloDeEscena.color;
+		float alphaInicial = colorActual.a;
+		float lerpPorcentaje = 0f;
+		float rateTiempo = 1f / tiempoDeColoreado; //Porcentaje de cuanto va coloreando por segundo
+		while (lerpPorcentaje <= 1f)
+		{
+			lerpPorcentaje += Time.deltaTime * rateTiempo;
+			colorActual.a = Mathf.Lerp(alphaInicial, alphaFinal, lerpPorcentaje);
+			tituloDeEscena.color = colorActual;
+			yield return 0;
+		}	}
 }

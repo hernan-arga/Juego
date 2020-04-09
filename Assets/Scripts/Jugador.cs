@@ -46,7 +46,7 @@ public abstract class Jugador : MonoBehaviour
 	public float damageTime = 0.3f;
 	private float damageTimer = 0f;
 	public float maxSalud = 10f;
-	private float saludActual;
+	private float saludActual, poderDeVelocidadActual;
 
 	private AudioSource audioSource;
 	public AudioClip footstep;
@@ -72,6 +72,7 @@ public abstract class Jugador : MonoBehaviour
 		golpeActual = Ataque.NINGUNO;
 		saludActual = maxSalud;
 		puedeActivarPoder = true;
+		poderDeVelocidadActual = poderDeVelocidad;
 	}
 
 	void Update()
@@ -266,11 +267,20 @@ public abstract class Jugador : MonoBehaviour
 		control = new Vector3 (Input.GetAxisRaw("Horizontal"), 0f,
 			Input.GetAxisRaw("Vertical"));
 
-		rigidBody.velocity = new Vector3(control.x * poderDeVelocidad * acelerador,
+		rigidBody.velocity = new Vector3(control.x * poderDeVelocidadActual * acelerador,
 		                                 rigidBody.velocity.y, 
-		                                 control.z * poderDeVelocidad * acelerador);
+		                                 control.z * poderDeVelocidadActual * acelerador);
 	}
 
+	void reiniciarPoderDeVelocidad()
+	{
+		poderDeVelocidadActual = poderDeVelocidad;
+	}
+
+	void setearPoderDeVelocidadACero()
+	{
+		poderDeVelocidadActual = 0f;
+	}
 
 	void controlarVolteoDeSprite(){
 		transform.localScale = new Vector3(Mathf.Sign(control.x), 1f, 1f);

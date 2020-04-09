@@ -162,7 +162,7 @@ public class Boss1 : Enemigo
 		switch (golpeActual)
 		{
 			case (AtaqueDeBoss1.LLAMARADA):
-				animator.SetTrigger("llamarada");
+				animator.SetBool("llamarada", true);
 				break;
 			case (AtaqueDeBoss1.VUELOYPIEDRAS):
 				animator.SetBool("volando", true);
@@ -176,6 +176,11 @@ public class Boss1 : Enemigo
 					golpeActual = Ataque.NINGUNO;
 					break;*/
 		}
+	}
+
+	void desactivarAnimacionLlamarada()
+	{
+		animator.SetBool("llamarada", false);
 	}
 
 	void controlarGiro()

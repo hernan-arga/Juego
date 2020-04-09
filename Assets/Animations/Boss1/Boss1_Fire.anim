@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.0166667
+        time: 3
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -58,7 +58,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.0166667
+        time: 3
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -178,7 +178,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.0166667
+        time: 3
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -206,7 +206,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.0166667
+        time: 3
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -227,6 +227,13 @@ AnimationClip:
   m_Events:
   - time: 0.33333334
     functionName: lanzarFuego
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 3
+    functionName: desactivarAnimacionLlamarada
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

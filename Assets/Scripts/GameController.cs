@@ -40,10 +40,12 @@ public class GameController : MonoBehaviour
 	{
 		coloreadorDeCamara.aclararEscena(tiempoDeAparicionDeEscena);
 		controladorDeMusica.aumentarVolumenGeneral(tiempoDeAparicionDeEscena);
+		coloreadorDeCamara.desvanecerTituloDeEscena(tiempoDeAparicionDeEscena);
 	}
 
 	void CargarSiguienteEscena()
 	{
-		//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);	}
+		//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	}
 
 }
