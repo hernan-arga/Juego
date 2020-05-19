@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
-using System;
 
 public enum Ataque{
 	NINGUNO, GOLPEDERECHO, GOLPEIZQUIERDO, PATADA
@@ -363,7 +361,6 @@ public abstract class Jugador : MonoBehaviour
 		}
 	}
 
-	//TODO: aparte de desactivarse supongo que tendria que volver a la pantalla principal o algo
 	public void Morir()
 	{
 		gameObject.SetActive(false);
