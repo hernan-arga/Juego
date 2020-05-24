@@ -23,7 +23,12 @@ public class GameController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (EstadoDeEscena.Equals(EstadoDeEscena.FinalDeEscena))
+		if (EstadoDeEscena.Equals(EstadoDeEscena.JefeDerrotado))
+		{
+			controladorDeMusica.decrementarVolumenMusica();
+		}
+
+		else if (EstadoDeEscena.Equals(EstadoDeEscena.FinalDeEscena))
 		{
 			DesvanecerEscena();
 			Invoke("CargarSiguienteEscena", tiempoDeAparicionDeEscena);

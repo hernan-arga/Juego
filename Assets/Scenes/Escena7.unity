@@ -1937,8 +1937,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e990175144dc91f4b873b25c36ad5a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSong: {fileID: 0}
+  levelSong: {fileID: 8300000, guid: c95222733187e554183fc01632cfbee4, type: 3}
   bossSong: {fileID: 8300000, guid: d323bef25beb01e44b17158c009251b3, type: 3}
+  transicionEntreCanciones: 2
+  levelSongLoopLength: 40
+  levelSongEndOfLoop: 40
   bossSongLoopLength: 44.809
   bossSongEndOfLoop: 70.4
 --- !u!4 &1110959857
@@ -3525,6 +3528,17 @@ MonoBehaviour:
           - m_Target: {fileID: 337156797}
             m_MethodName: SetActive
             m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 1110959856}
+            m_MethodName: PlayBossSong
+            m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
