@@ -1,184 +1,190 @@
 fileFormatVersion: 2
-guid: f2c3efa1ee8abb149bac2a3b22814a04
+guid: f14277515a70d31438314a9aa6097a0f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2125145835560643225
-    second: Ezequiel-sheet_0
+      213: 1273589483417398576
+    second: Diego-sheet_0
   - first:
-      213: -6077943436924574816
-    second: Ezequiel-sheet_1
+      213: -7164129157372517404
+    second: Diego-sheet_1
   - first:
-      213: -1971755824591702768
-    second: Ezequiel-sheet_2
+      213: -8871983407494987501
+    second: Diego-sheet_2
   - first:
-      213: 3274182098161197844
-    second: Ezequiel-sheet_3
+      213: 1044463311222553658
+    second: Diego-sheet_3
   - first:
-      213: -9027835037921383121
-    second: Ezequiel-sheet_4
+      213: -1961656804698472541
+    second: Diego-sheet_4
   - first:
-      213: -2248427120469513999
-    second: Ezequiel-sheet_5
+      213: 4420830681739414892
+    second: Diego-sheet_5
   - first:
-      213: -3926518643434433268
-    second: Ezequiel-sheet_6
+      213: 2845534074735999407
+    second: Diego-sheet_6
   - first:
-      213: -1628899392407875744
-    second: Ezequiel-sheet_7
+      213: -5223623235859559003
+    second: Diego-sheet_7
   - first:
-      213: 6273375598617853819
-    second: Ezequiel-sheet_8
+      213: -8120056283323685641
+    second: Diego-sheet_8
   - first:
-      213: 633223848205334356
-    second: Ezequiel-sheet_9
+      213: 9164148200888663416
+    second: Diego-sheet_9
   - first:
-      213: -8071769154059445922
-    second: Ezequiel-sheet_10
+      213: -7919807511722516184
+    second: Diego-sheet_10
   - first:
-      213: 956646906378888902
-    second: Ezequiel-sheet_11
+      213: 7918236880207874277
+    second: Diego-sheet_11
   - first:
-      213: -8599590740809390759
-    second: Ezequiel-sheet_12
+      213: -891512155579740802
+    second: Diego-sheet_12
   - first:
-      213: 3892904070583080690
-    second: Ezequiel-sheet_13
+      213: -8933580656319070384
+    second: Diego-sheet_13
   - first:
-      213: 5284272063076526757
-    second: Ezequiel-sheet_14
+      213: -3481929155667100559
+    second: Diego-sheet_14
   - first:
-      213: 2324515577940304287
-    second: Ezequiel-sheet_15
+      213: -4319109490387367103
+    second: Diego-sheet_15
   - first:
-      213: -566967115924305006
-    second: Ezequiel-sheet_16
+      213: -3754412091216001447
+    second: Diego-sheet_16
   - first:
-      213: -3978551309228506028
-    second: Ezequiel-sheet_17
+      213: 6714137738237558007
+    second: Diego-sheet_17
   - first:
-      213: -3003310949095134379
-    second: Ezequiel-sheet_18
+      213: -1254513611784962675
+    second: Diego-sheet_18
   - first:
-      213: -1924119878508613838
-    second: Ezequiel-sheet_19
+      213: 5896392718371625247
+    second: Diego-sheet_19
   - first:
-      213: 1077379071145834919
-    second: Ezequiel-sheet_20
+      213: 8849359507176558962
+    second: Diego-sheet_20
   - first:
-      213: 5558114230727869532
-    second: Ezequiel-sheet_21
+      213: -2369006328933613408
+    second: Diego-sheet_21
   - first:
-      213: -5281750591632922507
-    second: Ezequiel-sheet_22
+      213: 5135692143199473672
+    second: Diego-sheet_22
   - first:
-      213: -6381164581888482470
-    second: Ezequiel-sheet_23
+      213: -258154298661779840
+    second: Diego-sheet_23
   - first:
-      213: -5173773241779135705
-    second: Ezequiel-sheet_24
+      213: 3987742332916931511
+    second: Diego-sheet_24
   - first:
-      213: 9091291360044721366
-    second: Ezequiel-sheet_25
+      213: 4512100262496765185
+    second: Diego-sheet_25
   - first:
-      213: 2588883784317525203
-    second: Ezequiel-sheet_26
+      213: -3554341415292183624
+    second: Diego-sheet_26
   - first:
-      213: 8338781704918228415
-    second: Ezequiel-sheet_27
+      213: 7844109015987386513
+    second: Diego-sheet_27
   - first:
-      213: 1840192488764322556
-    second: Ezequiel-sheet_28
+      213: -4532962576159271911
+    second: Diego-sheet_28
   - first:
-      213: 3156411272496132000
-    second: Ezequiel-sheet_29
+      213: -5428924656109952128
+    second: Diego-sheet_29
   - first:
-      213: -2825487484734019314
-    second: Ezequiel-sheet_30
+      213: 915514560961992917
+    second: Diego-sheet_30
   - first:
-      213: 2327771666886427536
-    second: Ezequiel-sheet_31
+      213: -6184681285535269581
+    second: Diego-sheet_31
   - first:
-      213: 1332873758560286677
-    second: Ezequiel-sheet_32
+      213: -4047799719019661222
+    second: Diego-sheet_32
   - first:
-      213: 7872406950966029808
-    second: Ezequiel-sheet_33
+      213: -5411463785914174329
+    second: Diego-sheet_33
   - first:
-      213: 705527588640703160
-    second: Ezequiel-sheet_34
+      213: -967948238450050569
+    second: Diego-sheet_34
   - first:
-      213: -17233371118778987
-    second: Ezequiel-sheet_35
+      213: -5828919551221260857
+    second: Diego-sheet_35
   - first:
-      213: 2967112913728782145
-    second: Ezequiel-sheet_36
+      213: -4368353933568325500
+    second: Diego-sheet_36
   - first:
-      213: 8224624949629162630
-    second: Ezequiel-sheet_37
+      213: 1217511742026091918
+    second: Diego-sheet_37
   - first:
-      213: 5859549629494183124
-    second: Ezequiel-sheet_38
+      213: -55347064942793129
+    second: Diego-sheet_38
   - first:
-      213: 3194974348641029093
-    second: Ezequiel-sheet_39
+      213: 8421844182833656013
+    second: Diego-sheet_39
   - first:
-      213: 3005261855901706564
-    second: Ezequiel-sheet_40
+      213: 926401450137280289
+    second: Diego-sheet_40
   - first:
-      213: 278156028964965363
-    second: Ezequiel-sheet_41
+      213: 987152330852007474
+    second: Diego-sheet_41
   - first:
-      213: 207253238908985698
-    second: Ezequiel-sheet_42
+      213: -3429307006784922358
+    second: Diego-sheet_42
   - first:
-      213: -1793020014581478696
-    second: Ezequiel-sheet_43
+      213: -6453056436292356115
+    second: Diego-sheet_43
   - first:
-      213: 1529195748779447688
-    second: Ezequiel-sheet_44
+      213: -5678940770526011193
+    second: Diego-sheet_44
   - first:
-      213: 2668997430016122361
-    second: Ezequiel-sheet_45
+      213: 9218101919842871195
+    second: Diego-sheet_45
   - first:
-      213: -986312916740077986
-    second: Ezequiel-sheet_46
+      213: -1836505115635222611
+    second: Diego-sheet_46
   - first:
-      213: -427623625675190054
-    second: Ezequiel-sheet_47
+      213: 1791376734689201573
+    second: Diego-sheet_47
   - first:
-      213: -4428797849059354768
-    second: Ezequiel-sheet_48
+      213: 8189571779862486211
+    second: Diego-sheet_48
   - first:
-      213: 19478244140286721
-    second: Ezequiel-sheet_49
+      213: 2633363971375798835
+    second: Diego-sheet_49
   - first:
-      213: -3137246449801898047
-    second: Ezequiel-sheet_50
+      213: -100963731256115079
+    second: Diego-sheet_50
   - first:
-      213: 1882505509333215584
-    second: Ezequiel-sheet_51
+      213: -7411490382904851008
+    second: Diego-sheet_51
   - first:
-      213: -6836798684656937042
-    second: Ezequiel-sheet_0
+      213: 1385724932428724528
+    second: Diego-sheet_52
   - first:
-      213: 33051249639287721
-    second: Ezequiel-sheet_1
+      213: -8688795792690632133
+    second: Diego-sheet_53
   - first:
-      213: 587861319482603288
-    second: Ezequiel-sheet_2
+      213: -3186951039946691647
+    second: Diego-sheet_0
   - first:
-      213: 5094823351810293624
-    second: Ezequiel-sheet_3
+      213: -2537007515109753365
+    second: Diego-sheet_1
   - first:
-      213: 6146759369307434542
-    second: Ezequiel-sheet_4
+      213: -7679266838055640248
+    second: Diego-sheet_2
   - first:
-      213: 4536718515570454970
-    second: Ezequiel-sheet_5
+      213: -4567809142609483253
+    second: Diego-sheet_3
   - first:
-      213: -6599727097754798372
-    second: Ezequiel-sheet_6
+      213: -7639254333823639376
+    second: Diego-sheet_4
+  - first:
+      213: 788965319245757372
+    second: Diego-sheet_5
+  - first:
+      213: -1032720202021734748
+    second: Diego-sheet_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -234,7 +240,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -264,154 +270,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ezequiel-sheet_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 640
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ea75a28b1dfce11a0800000000000000
-      internalID: -6836798684656937042
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ezequiel-sheet_1
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 640
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9abe12abfeb657000800000000000000
-      internalID: 33051249639287721
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ezequiel-sheet_2
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 640
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 817f3f461c0882800800000000000000
-      internalID: 587861319482603288
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ezequiel-sheet_3
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 640
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87f740e48d274b640800000000000000
-      internalID: 5094823351810293624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ezequiel-sheet_4
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 640
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e2eaf57541dad4550800000000000000
-      internalID: 6146759369307434542
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ezequiel-sheet_5
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 640
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ab1b38e0479a5fe30800000000000000
-      internalID: 4536718515570454970
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ezequiel-sheet_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 560
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cd63ec3eb2f0964a0800000000000000
-      internalID: -6599727097754798372
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ezequiel-sheet_7
+      name: Diego-sheet_7
       rect:
         serializedVersion: 2
         x: 120
@@ -425,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06fcda402acf469e0800000000000000
-      internalID: -1628899392407875744
+      spriteID: 5ad4d1ac756f187b0800000000000000
+      internalID: -5223623235859559003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_8
+      name: Diego-sheet_8
       rect:
         serializedVersion: 2
         x: 240
@@ -446,14 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7f78328ed18f0750800000000000000
-      internalID: 6273375598617853819
+      spriteID: 7f4205c05d3cf4f80800000000000000
+      internalID: -8120056283323685641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_9
+      name: Diego-sheet_9
       rect:
         serializedVersion: 2
         x: 360
@@ -467,14 +326,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 457b5972cb9a9c800800000000000000
-      internalID: 633223848205334356
+      spriteID: 87df0072c389d2f70800000000000000
+      internalID: 9164148200888663416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_10
+      name: Diego-sheet_10
       rect:
         serializedVersion: 2
         x: 480
@@ -488,14 +347,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e59d45f68b05bff80800000000000000
-      internalID: -8071769154059445922
+      spriteID: 8212f4e6701371290800000000000000
+      internalID: -7919807511722516184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_11
+      name: Diego-sheet_11
       rect:
         serializedVersion: 2
         x: 600
@@ -509,14 +368,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c6a036fa41b64d00800000000000000
-      internalID: 956646906378888902
+      spriteID: 5e8003c6d7a33ed60800000000000000
+      internalID: 7918236880207874277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_12
+      name: Diego-sheet_12
       rect:
         serializedVersion: 2
         x: 0
@@ -530,14 +389,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9556158a8cd18a880800000000000000
-      internalID: -8599590740809390759
+      spriteID: e7d0abdfa66b0a3f0800000000000000
+      internalID: -891512155579740802
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_13
+      name: Diego-sheet_13
       rect:
         serializedVersion: 2
         x: 120
@@ -551,14 +410,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f6d6cf60af560630800000000000000
-      internalID: 3892904070583080690
+      spriteID: 05ffcc7a9bb850480800000000000000
+      internalID: -8933580656319070384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_14
+      name: Diego-sheet_14
       rect:
         serializedVersion: 2
         x: 240
@@ -572,14 +431,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5aa6230b171855940800000000000000
-      internalID: 5284272063076526757
+      spriteID: 17cf26781e3bdafc0800000000000000
+      internalID: -3481929155667100559
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_15
+      name: Diego-sheet_15
       rect:
         serializedVersion: 2
         x: 360
@@ -593,14 +452,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f916ef13a96524020800000000000000
-      internalID: 2324515577940304287
+      spriteID: 14b41775dc07f04c0800000000000000
+      internalID: -4319109490387367103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_16
+      name: Diego-sheet_16
       rect:
         serializedVersion: 2
         x: 480
@@ -614,14 +473,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29b0108796ab128f0800000000000000
-      internalID: -566967115924305006
+      spriteID: 95683a24816a5ebc0800000000000000
+      internalID: -3754412091216001447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_17
+      name: Diego-sheet_17
       rect:
         serializedVersion: 2
         x: 600
@@ -635,14 +494,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45405ccd9a859c8c0800000000000000
-      internalID: -3978551309228506028
+      spriteID: 7fcb1bc23b86d2d50800000000000000
+      internalID: 6714137738237558007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_18
+      name: Diego-sheet_18
       rect:
         serializedVersion: 2
         x: 0
@@ -656,14 +515,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55ba421aa981256d0800000000000000
-      internalID: -3003310949095134379
+      spriteID: d8d3aab4482179ee0800000000000000
+      internalID: -1254513611784962675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_19
+      name: Diego-sheet_19
       rect:
         serializedVersion: 2
         x: 120
@@ -677,14 +536,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23fe9383a272c45e0800000000000000
-      internalID: -1924119878508613838
+      spriteID: f199dbadfe134d150800000000000000
+      internalID: 5896392718371625247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_20
+      name: Diego-sheet_20
       rect:
         serializedVersion: 2
         x: 240
@@ -698,14 +557,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a976189e8e93fe00800000000000000
-      internalID: 1077379071145834919
+      spriteID: 2711cfaf59d3fca70800000000000000
+      internalID: 8849359507176558962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_21
+      name: Diego-sheet_21
       rect:
         serializedVersion: 2
         x: 360
@@ -719,14 +578,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c540497d173622d40800000000000000
-      internalID: 5558114230727869532
+      spriteID: 0a0824d9b499f1fd0800000000000000
+      internalID: -2369006328933613408
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_22
+      name: Diego-sheet_22
       rect:
         serializedVersion: 2
         x: 480
@@ -740,14 +599,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 578a28122d373b6b0800000000000000
-      internalID: -5281750591632922507
+      spriteID: 8005b2f4bc4a54740800000000000000
+      internalID: 5135692143199473672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_23
+      name: Diego-sheet_23
       rect:
         serializedVersion: 2
         x: 600
@@ -761,14 +620,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a53ab332f9c8177a0800000000000000
-      internalID: -6381164581888482470
+      spriteID: 086460b780ada6cf0800000000000000
+      internalID: -258154298661779840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_24
+      name: Diego-sheet_24
       rect:
         serializedVersion: 2
         x: 0
@@ -782,14 +641,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72b555ff5a01338b0800000000000000
-      internalID: -5173773241779135705
+      spriteID: 7bb1d49168e475730800000000000000
+      internalID: 3987742332916931511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_25
+      name: Diego-sheet_25
       rect:
         serializedVersion: 2
         x: 120
@@ -803,14 +662,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d42b010351ca2e70800000000000000
-      internalID: 9091291360044721366
+      spriteID: 105011958433e9e30800000000000000
+      internalID: 4512100262496765185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_26
+      name: Diego-sheet_26
       rect:
         serializedVersion: 2
         x: 240
@@ -824,14 +683,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dcd309d5109de320800000000000000
-      internalID: 2588883784317525203
+      spriteID: 8bbdc0380517caec0800000000000000
+      internalID: -3554341415292183624
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_27
+      name: Diego-sheet_27
       rect:
         serializedVersion: 2
         x: 360
@@ -845,14 +704,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbd5d25a7cd49b370800000000000000
-      internalID: 8338781704918228415
+      spriteID: 198fd55179fdbdc60800000000000000
+      internalID: 7844109015987386513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_28
+      name: Diego-sheet_28
       rect:
         serializedVersion: 2
         x: 480
@@ -866,14 +725,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf2b32b915da98910800000000000000
-      internalID: 1840192488764322556
+      spriteID: 91413ebbd8ea711c0800000000000000
+      internalID: -4532962576159271911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_29
+      name: Diego-sheet_29
       rect:
         serializedVersion: 2
         x: 600
@@ -887,14 +746,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0afab263453ddcb20800000000000000
-      internalID: 3156411272496132000
+      spriteID: 083e438f9c598a4b0800000000000000
+      internalID: -5428924656109952128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_30
+      name: Diego-sheet_30
       rect:
         serializedVersion: 2
         x: 0
@@ -908,14 +767,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e09ed1b4a1ad9c8d0800000000000000
-      internalID: -2825487484734019314
+      spriteID: 5d856d084af84bc00800000000000000
+      internalID: 915514560961992917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_31
+      name: Diego-sheet_31
       rect:
         serializedVersion: 2
         x: 120
@@ -929,14 +788,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0930cfa7ff7ed4020800000000000000
-      internalID: 2327771666886427536
+      spriteID: 33df9ae73299b2aa0800000000000000
+      internalID: -6184681285535269581
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_32
+      name: Diego-sheet_32
       rect:
         serializedVersion: 2
         x: 240
@@ -950,14 +809,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d7fc6d1f915f7210800000000000000
-      internalID: 1332873758560286677
+      spriteID: a5838e90a9353d7c0800000000000000
+      internalID: -4047799719019661222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_33
+      name: Diego-sheet_33
       rect:
         serializedVersion: 2
         x: 360
@@ -971,14 +830,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fd65af7968604d60800000000000000
-      internalID: 7872406950966029808
+      spriteID: 784f1bd9b5e96e4b0800000000000000
+      internalID: -5411463785914174329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_34
+      name: Diego-sheet_34
       rect:
         serializedVersion: 2
         x: 480
@@ -992,14 +851,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b2ca249a998ac900800000000000000
-      internalID: 705527588640703160
+      spriteID: 7f9383e94382192f0800000000000000
+      internalID: -967948238450050569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_35
+      name: Diego-sheet_35
       rect:
         serializedVersion: 2
         x: 600
@@ -1013,14 +872,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 595ce2c1756c2cff0800000000000000
-      internalID: -17233371118778987
+      spriteID: 7cd90251d848b1fa0800000000000000
+      internalID: -5828919551221260857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_36
+      name: Diego-sheet_36
       rect:
         serializedVersion: 2
         x: 0
@@ -1034,14 +893,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14f374f797d4d2920800000000000000
-      internalID: 2967112913728782145
+      spriteID: 488ca70fd3d7063c0800000000000000
+      internalID: -4368353933568325500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_37
+      name: Diego-sheet_37
       rect:
         serializedVersion: 2
         x: 120
@@ -1055,14 +914,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6841675d0dcb32270800000000000000
-      internalID: 8224624949629162630
+      spriteID: e8d055d8a7875e010800000000000000
+      internalID: 1217511742026091918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_38
+      name: Diego-sheet_38
       rect:
         serializedVersion: 2
         x: 240
@@ -1076,14 +935,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d4c5c1c75d415150800000000000000
-      internalID: 5859549629494183124
+      spriteID: 75e69be332e5b3ff0800000000000000
+      internalID: -55347064942793129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_39
+      name: Diego-sheet_39
       rect:
         serializedVersion: 2
         x: 360
@@ -1097,14 +956,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ebcb3d0e34d65c20800000000000000
-      internalID: 3194974348641029093
+      spriteID: dc07d77d9a660e470800000000000000
+      internalID: 8421844182833656013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_40
+      name: Diego-sheet_40
       rect:
         serializedVersion: 2
         x: 480
@@ -1118,14 +977,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4496d024cb5d4b920800000000000000
-      internalID: 3005261855901706564
+      spriteID: 12fd6dae53d3bdc00800000000000000
+      internalID: 926401450137280289
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_41
+      name: Diego-sheet_41
       rect:
         serializedVersion: 2
         x: 600
@@ -1139,14 +998,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fb07924f653cd300800000000000000
-      internalID: 278156028964965363
+      spriteID: 23ef1a390d113bd00800000000000000
+      internalID: 987152330852007474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_42
+      name: Diego-sheet_42
       rect:
         serializedVersion: 2
         x: 0
@@ -1160,14 +1019,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26128b309bf40e200800000000000000
-      internalID: 207253238908985698
+      spriteID: a0d93d25277a860d0800000000000000
+      internalID: -3429307006784922358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_43
+      name: Diego-sheet_43
       rect:
         serializedVersion: 2
         x: 120
@@ -1181,14 +1040,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8da84bbebc9ed17e0800000000000000
-      internalID: -1793020014581478696
+      spriteID: de7fe376c532276a0800000000000000
+      internalID: -6453056436292356115
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_44
+      name: Diego-sheet_44
       rect:
         serializedVersion: 2
         x: 240
@@ -1202,14 +1061,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88559067e6bc83510800000000000000
-      internalID: 1529195748779447688
+      spriteID: 7c0605025795031b0800000000000000
+      internalID: -5678940770526011193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_45
+      name: Diego-sheet_45
       rect:
         serializedVersion: 2
         x: 360
@@ -1223,14 +1082,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fd9a8a850f2a0520800000000000000
-      internalID: 2668997430016122361
+      spriteID: b97a4934bd64def70800000000000000
+      internalID: 9218101919842871195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_46
+      name: Diego-sheet_46
       rect:
         serializedVersion: 2
         x: 480
@@ -1244,14 +1103,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e560450c0a9ef42f0800000000000000
-      internalID: -986312916740077986
+      spriteID: da7ff5ad35c6386e0800000000000000
+      internalID: -1836505115635222611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_47
+      name: Diego-sheet_47
       rect:
         serializedVersion: 2
         x: 600
@@ -1265,14 +1124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad0d01ef396c01af0800000000000000
-      internalID: -427623625675190054
+      spriteID: 5ad8c0a26af3cd810800000000000000
+      internalID: 1791376734689201573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_48
+      name: Diego-sheet_48
       rect:
         serializedVersion: 2
         x: 0
@@ -1286,14 +1145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0779dc032dfb982c0800000000000000
-      internalID: -4428797849059354768
+      spriteID: 3cc5441c42437a170800000000000000
+      internalID: 8189571779862486211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_49
+      name: Diego-sheet_49
       rect:
         serializedVersion: 2
         x: 120
@@ -1307,14 +1166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10384de1c53354000800000000000000
-      internalID: 19478244140286721
+      spriteID: 33a9a2e64969b8420800000000000000
+      internalID: 2633363971375798835
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_50
+      name: Diego-sheet_50
       rect:
         serializedVersion: 2
         x: 240
@@ -1328,14 +1187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c7d3bac9f24674d0800000000000000
-      internalID: -3137246449801898047
+      spriteID: 9700847750e499ef0800000000000000
+      internalID: -100963731256115079
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ezequiel-sheet_51
+      name: Diego-sheet_51
       rect:
         serializedVersion: 2
         x: 360
@@ -1349,8 +1208,197 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 069a58b69c0002a10800000000000000
-      internalID: 1882505509333215584
+      spriteID: 0c58bb6b3c8152990800000000000000
+      internalID: -7411490382904851008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diego-sheet_52
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 120
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 039f0d1fb751b3310800000000000000
+      internalID: 1385724932428724528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diego-sheet_53
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 120
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3a24c203423b6780800000000000000
+      internalID: -8688795792690632133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diego-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 120
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cb6a631aeca5c3d0800000000000000
+      internalID: -3186951039946691647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diego-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 640
+        width: 120
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bedf26d4b1dbaccd0800000000000000
+      internalID: -2537007515109753365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diego-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 640
+        width: 120
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 843a14e4f73cd6590800000000000000
+      internalID: -7679266838055640248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diego-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 640
+        width: 120
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0aeafc39c1eb90c0800000000000000
+      internalID: -4567809142609483253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diego-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 640
+        width: 120
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b0249b68aaebf590800000000000000
+      internalID: -7639254333823639376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diego-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 640
+        width: 120
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbbfeb917c7f2fa00800000000000000
+      internalID: 788965319245757372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diego-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 560
+        width: 120
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a6ff16a27a0ba1f0800000000000000
+      internalID: -1032720202021734748
       vertices: []
       indices: 
       edges: []

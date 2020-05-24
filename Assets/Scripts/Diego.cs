@@ -11,7 +11,7 @@ public class Diego : Jugador
 	{
 		base.Start();
 		SetEstaLeyendo(true);
-		posicionDetrasDeCompañero = Companiero.transform.position + new Vector3(0f, 0f, 2f);
+		posicionDetrasDeCompañero = Companiero.transform.position + new Vector3(1f, 0f, 2f);
 		CodigoDePoder.enabled = false;
 	}
 
