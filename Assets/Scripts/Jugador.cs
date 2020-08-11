@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System;
+using System.Collections;
 
 public enum Ataque{
 	NINGUNO, GOLPEDERECHO, GOLPEIZQUIERDO, PATADA
@@ -73,7 +75,71 @@ public abstract class Jugador : MonoBehaviour
 		poderDeVelocidadActual = poderDeVelocidad;
 	}
 
+	// Si no se aplica una fuerza continua, no hay problema en manejar las fisicas en el update porque solo se trataran durante un frame.
+	// La deteccion de la tecla en un frame va en el update porque el mismo se ejecuta por cada frame.
 	void Update()
+	{
+		controlarVariablesDeDanio();
+
+		if (elJugadorPuedeJugar())
+		{
+			controlarComandosDelJugador();
+		}
+		
+		setearAnimaciones();
+		controlarOrdenDeCapa();
+	}
+
+	// Como al moverse, se aplica una fuerza continua, va en el fixedUpdate
+	protected virtual void FixedUpdate ()
+	{
+		if (elJugadorPuedeJugar() && !seSolicitaActivarPoder())
+		{
+			chequearMoverse();
+		}
+
+
+		controlarLimitesEnDondeMoverse();
+        
+	}
+
+
+	void controlarComandosDelJugador()
+    {
+		if (seSolicitaActivarPoder())
+		{
+			controlarActivacionDePoder();
+		}
+
+		else
+		{
+			chequearGolpe();
+			chequearLevantarItem();
+			chequearTirarItem();
+			chequearSaltar();
+			reiniciarComboTimer();
+		}
+	}
+
+	bool elJugadorPuedeJugar()
+	{
+		return !isDead && !daniado && EstaDisponibleParaJugar();
+	}
+
+	bool seSolicitaActivarPoder()
+	{
+		return puedeActivarPoder && CodigoDePoder.CodigoActivado;
+	}
+
+	void controlarActivacionDePoder()
+    {
+		if (!CodigoDePoder.EstaActivadoElPoder && tocandoPiso)
+		{
+			TriggerearPoder();
+		}
+	}
+
+	void controlarVariablesDeDanio()
 	{
 		if (daniado && !isDead)
 		{
@@ -84,35 +150,6 @@ public abstract class Jugador : MonoBehaviour
 				damageTimer = 0f;
 			}
 		}
-	}
-
-	protected virtual void FixedUpdate ()
-	{
-		if (!isDead && !daniado && EstaDisponibleParaJugar())
-		{
-			if (puedeActivarPoder && CodigoDePoder.CodigoActivado)
-			{
-				if (!CodigoDePoder.EstaActivadoElPoder)
-				{
-					TriggerearPoder();
-				}
-			}
-
-			else
-			{
-				chequearMoverse();
-				chequearGolpe();
-				chequearLevantarItem();
-				chequearTirarItem();
-				chequearSaltar();
-				reiniciarComboTimer();
-			}
-
-		}
-
-        setearAnimaciones();
-        controlarOrdenDeCapa();
-		controlarLimitesEnDondeMoverse();
 	}
 
 	protected void DesactivarPoder()
@@ -162,7 +199,8 @@ public abstract class Jugador : MonoBehaviour
 	}
 
 	void chequearSaltar(){
-		if(Input.GetKeyDown (KeyCode.K) && tocandoPiso){
+
+		if (Input.GetKeyDown (KeyCode.K) && tocandoPiso){
 			rigidBody.velocity = Vector3.zero;
 			rigidBody.AddForce(Vector3.up * poderDeSalto);
 		}
